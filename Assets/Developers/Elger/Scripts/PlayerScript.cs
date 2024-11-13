@@ -5,30 +5,33 @@ using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
-    Rigidbody rb;
-    CharacterController playerController;
+    [SerializeField] private float playerSpeed = 2.0f;
+    [SerializeField] private float gravityValue = -9.81f;
+    private Vector3 playerVelocity;
+    [SerializeField] private float playerHealth;
+    [SerializeField] private float playerKnockDownHealth;
+
+    private CharacterController characterController;
+
     private Vector2 movementInput = Vector2.zero;
-    public float speed;
-    private void Awake()
+    void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        playerController = GetComponent<CharacterController>();
+        characterController = gameObject.GetComponent<CharacterController>();
     }
-    public void Movement(InputAction.CallbackContext ctx)
+
+    public void OnMove(InputAction.CallbackContext context)
     {
-        Debug.Log("move");
-        movementInput = ctx.ReadValue<Vector2>();
-    }
-    public void Interact(InputAction.CallbackContext ctx) 
-    {
-        if (ctx.performed)
+        if (context.performed)
         {
-            Debug.Log("test");
+            movementInput = context.ReadValue<Vector2>();
         }
+
     }
-    //private void Update()
-    //{
-    //    Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
-    //    playerController.Move(move * Time.deltaTime * speed);
-    //}
+
+    void Update()
+    {
+        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
+        characterController.Move(move * Time.deltaTime * playerSpeed);
+        /*        characterController.Move(playerVelocity * Time.deltaTime);*/
+    }
 }
