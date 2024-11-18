@@ -35,7 +35,6 @@ public class PlayerScript : MonoBehaviour
     {
         if (context.performed)
         {
-            rb.mass += 1;
             movementInput = context.ReadValue<Vector2>();
         }
     }
@@ -47,7 +46,7 @@ public class PlayerScript : MonoBehaviour
             switch (state)
             {
                 case states.minigame1:
-                    rb.mass = 1;
+                    rb.drag = 0;
 
                     Vector3 movement = new Vector3(transform.forward.x, 0.1f, transform.forward.z);
                     rb.AddForce(movement * dashSpeed, ForceMode.Impulse);
@@ -90,12 +89,14 @@ public class PlayerScript : MonoBehaviour
             gameObject.transform.forward = move;
         }
 
-        if (rb.velocity.z < 1 && rb.velocity.z > -1)
+        if (rb.velocity.magnitude < 1 && rb.velocity.magnitude > -1 )
         {
+            rb.drag = 0;
             barrier.SetActive(false);
         }
         else
         {
+            rb.drag += 0.2f;
             barrier.SetActive(true);
         }
 
