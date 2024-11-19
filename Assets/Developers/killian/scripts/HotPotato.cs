@@ -35,12 +35,19 @@ public class HotPotato : MonoBehaviour
         F_BombTimer -= Time.deltaTime;
         if (F_BombTimer <= 0)
         {
+            for (int i = 0; i < GO_Players.Count; i++)
+            {
+                if (GO_Players[i].GetComponent<HotPotatoPlayer>().GetBomb())
+                {
+                    Destroy(GO_Players[i]);
+                    GO_Players.Remove(GO_Players[i]);
+                }
+            }
             Debug.Log("timer expired");
-            Destroy(GO_Players[I_RandomPlayer]);
-            GO_Players.Remove(GO_Players[I_RandomPlayer] );
             I_PlayersLeft--;
             F_BombTimer = 10;
             I_RandomPlayer = Random.Range(0, GO_Players.Count);
+            GO_Players[I_RandomPlayer].GetComponent<HotPotatoPlayer>().SetBomb();
             Debug.Log(I_RandomPlayer);
         }
 
