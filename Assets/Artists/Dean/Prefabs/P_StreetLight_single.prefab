@@ -293,6 +293,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3681199450370727857}
+  - component: {fileID: 7302959812632994972}
   m_Layer: 0
   m_Name: P_StreetLight_single
   m_TagString: Untagged
@@ -308,8 +309,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4061666089418196235}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.9718975, z: -0, w: -0.23540471}
-  m_LocalPosition: {x: -5.7994103, y: -2.7395906, z: 15.236985}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -320,7 +321,28 @@ Transform:
   - {fileID: 2171028514785768754}
   - {fileID: 2088374452591400765}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -207.231, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7302959812632994972
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4061666089418196235}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.79482913, y: 6.002232, z: 0.7827602}
+  m_Center: {x: -0.006034434, y: 2.9722407, z: -0.000000029802322}
 --- !u!1 &4643724329135743578
 GameObject:
   m_ObjectHideFlags: 0
