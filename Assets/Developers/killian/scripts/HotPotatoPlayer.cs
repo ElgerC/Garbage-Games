@@ -26,10 +26,13 @@ public class HotPotatoPlayer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
-        if (B_HasBomb)
+        TransferPotato(collision.gameObject);
+    }
+    public void TransferPotato(GameObject obj)
+    {
+        if (B_HasBomb && obj.transform.tag == "Player")
         {
-            StartCoroutine(BombPassDown(collision.gameObject));
+            StartCoroutine(BombPassDown(obj));
             Debug.Log("switched");
         }
     }

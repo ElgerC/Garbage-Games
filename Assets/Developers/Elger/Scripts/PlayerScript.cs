@@ -29,7 +29,7 @@ public class PlayerScript : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        Gamemanager.instance.AddPlayer(gameObject);
+        //Gamemanager.instance.AddPlayer(gameObject);
     }
 
     public void OnMove(InputAction.CallbackContext context)

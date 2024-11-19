@@ -23,6 +23,16 @@ public class HotPotato : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < FindObjectsOfType<PlayerScript>().Length; i++)
+        {
+            GO_Players.Add(FindObjectsOfType<PlayerScript>()[i].gameObject);
+        }
+        for (int i = 0; i < GO_Players.Count; i++)
+        {
+            GO_Players[i].AddComponent<HotPotatoPlayer>();
+        }
+
+
         I_RandomPlayer = Random.Range(0, GO_Players.Count);
         GO_Players[I_RandomPlayer].GetComponent<HotPotatoPlayer>().SetBomb();
         Debug.Log(I_RandomPlayer);
@@ -31,8 +41,15 @@ public class HotPotato : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        F_BombTimer -= Time.deltaTime;
+        if (GO_Players.Count > 1)
+        {
+            F_BombTimer -= Time.deltaTime;
+        }
+        else
+        {
+            Destroy(GO_Bombprefab);
+        }
+
         if (F_BombTimer <= 0)
         {
             for (int i = 0; i < GO_Players.Count; i++)
@@ -58,12 +75,6 @@ public class HotPotato : MonoBehaviour
                 GO_Bombprefab.transform.position = GO_Players[i].transform.position + V3_Offset;
                 break;
             }
-        }
-
-        if (I_PlayersLeft == 1) 
-        {
-            Destroy(GO_Bombprefab);
-            F_BombTimer = 100000;
         }
     }
 }
