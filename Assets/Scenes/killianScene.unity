@@ -181,7 +181,7 @@ MonoBehaviour:
   GO_Bombprefab: {fileID: 226792486}
   I_RandomPlayer: 0
   I_PlayersLeft: 4
-  F_BombTimer: 9000000
+  F_BombTimer: 10
 --- !u!1001 &452879917
 PrefabInstance:
   m_ObjectHideFlags: 0

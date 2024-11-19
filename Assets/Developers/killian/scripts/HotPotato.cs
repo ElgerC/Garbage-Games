@@ -60,10 +60,10 @@ public class HotPotato : MonoBehaviour
             }
         }
 
-        if (I_PlayersLeft == 1) 
-        { 
+        //if (I_PlayersLeft == 1) 
+        //{ 
             //end minigame
-        }
+        //}
 
     }
 }
