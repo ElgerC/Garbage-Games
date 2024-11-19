@@ -60,10 +60,10 @@ public class HotPotato : MonoBehaviour
             }
         }
 
-        //if (I_PlayersLeft == 1) 
-        //{ 
-            //end minigame
-        //}
-
+        if (I_PlayersLeft == 1) 
+        {
+            Destroy(GO_Bombprefab);
+            F_BombTimer = 100000;
+        }
     }
 }

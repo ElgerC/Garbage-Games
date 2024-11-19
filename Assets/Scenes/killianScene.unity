@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 334207690}
   - component: {fileID: 334207691}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: Hotpotato_minigame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   GO_Bombprefab: {fileID: 226792486}
   I_RandomPlayer: 0
   I_PlayersLeft: 4
-  F_BombTimer: 10
+  F_BombTimer: 100
 --- !u!1001 &452879917
 PrefabInstance:
   m_ObjectHideFlags: 0
