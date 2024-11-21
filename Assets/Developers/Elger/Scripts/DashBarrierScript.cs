@@ -11,7 +11,6 @@ public class DashBarrierScript : MonoBehaviour
             Vector3 movement = new Vector3(transform.forward.x, 0.1f, transform.forward.z);
             other.gameObject.GetComponent<Rigidbody>().AddForce(movement * 30, ForceMode.Impulse);
 
-            Debug.Log(other);
             transform.parent.GetComponent<HotPotatoPlayer>().TransferPotato(other.gameObject);
         }
     }

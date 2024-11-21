@@ -26,10 +26,13 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private GameObject barrier;
 
+    Gamemanager gamemanager;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        //Gamemanager.instance.AddPlayer(gameObject);
+        gamemanager = Gamemanager.instance;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -44,9 +47,10 @@ public class PlayerScript : MonoBehaviour
     {
         if (context.performed && canAct)
         {
-            switch (state)
+            Debug.Log(gamemanager.S_curMinigame);
+            switch (gamemanager.S_curMinigame)
             {
-                case states.minigame1:
+                case "HotPotato":
                     rb.drag = 0;
 
                     Vector3 movement = new Vector3(transform.forward.x, 0.1f, transform.forward.z);
@@ -56,22 +60,19 @@ public class PlayerScript : MonoBehaviour
 
                     StartCoroutine(ActionCD(4));
                     break;
-                case states.minigame2:
-                    Debug.Log(state);
-                    break;
-                case states.minigame3:
-                    Debug.Log(state);
-                    break;
-                case states.minigame4:
-                    Debug.Log(state);
-                    break;
-                case states.minigame5:
-                    Debug.Log(state);
-                    break;
+                default: break;
             }
         }
     }
 
+    public void OnReady(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed && gamemanager.S_curMinigame == "ElgerScene")
+        {
+            gamemanager.Ready();
+        }
+
+    }
     private IEnumerator ActionCD(float cooldown)
     {
         canAct = false;
@@ -89,17 +90,18 @@ public class PlayerScript : MonoBehaviour
         {
             gameObject.transform.forward = move;
         }
-
-        if (rb.velocity.magnitude < 1 && rb.velocity.magnitude > -1 )
-        {
-            rb.drag = 0;
-            barrier.SetActive(false);
-        }
+        if (gamemanager.S_curMinigame == "HotPotato")
+            if (rb.velocity.magnitude < 1 && rb.velocity.magnitude > -1)
+            {
+                rb.drag = 0;
+                barrier.SetActive(false);
+            }
+            else
+            {
+                rb.drag += 0.2f;
+                barrier.SetActive(true);
+            }
         else
-        {
-            rb.drag += 0.2f;
-            barrier.SetActive(true);
-        }
-
+            barrier.SetActive(false);
     }
 }
