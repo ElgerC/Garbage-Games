@@ -23,7 +23,7 @@ public class Gamemanager : MonoBehaviour
 
     private int minigameIndex = 0;
 
-    [SerializeField] private ScriptableObject gameManagerData;
+    [SerializeField] private GamaManagerScrptObj gameManagerData;
 
     private void Awake()
     {
@@ -45,6 +45,7 @@ public class Gamemanager : MonoBehaviour
         for (int i = 0; i < playerScripts.Length; i++)
         {
             players.Add(playerScripts[i].gameObject);
+            playerScripts[i].transform.position = gameManagerData.m_MinigamesData[minigameIndex].startPositions[i];
         }
     }
     private void OnEnable()
@@ -59,7 +60,7 @@ public class Gamemanager : MonoBehaviour
     {
         for (int i = 0; i < players.Count; i++)
         {
-            players[i].transform.position = 
+            players[i].transform.position = gameManagerData.m_MinigamesData[minigameIndex].startPositions[i];
         }
     }
     private string ChooseScene()

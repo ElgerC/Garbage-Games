@@ -37,7 +37,7 @@ public class PlayerScript : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && gamemanager.S_curMinigame != "ElgerScene")
         {
             movementInput = context.ReadValue<Vector2>();
         }
