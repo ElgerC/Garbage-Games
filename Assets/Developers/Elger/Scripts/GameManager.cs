@@ -63,7 +63,7 @@ public class Gamemanager : MonoBehaviour
             players[i].transform.position = gameManagerData.m_MinigamesData[minigameIndex].startPositions[i];
         }
     }
-    private string ChooseScene()
+    public string ChooseScene()
     {
         if (SceneManager.GetActiveScene().name != "StartScene")
         {

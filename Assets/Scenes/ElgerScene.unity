@@ -284,7 +284,6 @@ MonoBehaviour:
   minigames:
   - StartScene
   - testScene 1
-  - testScene 2
   S_curMinigame: ElgerScene
   Txt_timerTxt: {fileID: 1875684538}
   gameManagerData: {fileID: 11400000, guid: 0ba54ca8baf543540973a90d842fcc68, type: 2}
