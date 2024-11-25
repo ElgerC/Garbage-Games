@@ -76,7 +76,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6baae56eb1a502b4e9e7579fd40a60d8,
         type: 3}
       propertyPath: m_Name
-      value: building 4
+      value: P_B4_red
       objectReference: {fileID: 0}
     - target: {fileID: 2810008576313105021, guid: 6baae56eb1a502b4e9e7579fd40a60d8,
         type: 3}
@@ -91,5 +91,61 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6baae56eb1a502b4e9e7579fd40a60d8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3755425746287370433}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6baae56eb1a502b4e9e7579fd40a60d8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5237004731598420384}
   m_SourcePrefab: {fileID: 100100000, guid: 6baae56eb1a502b4e9e7579fd40a60d8, type: 3}
+--- !u!1 &7610665980875529214 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6baae56eb1a502b4e9e7579fd40a60d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7304818473978390191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3755425746287370433
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7610665980875529214}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.0721855, y: 13.730089, z: 0.9413119}
+  m_Center: {x: -0.03450966, y: 6.7812243, z: 0}
+--- !u!65 &5237004731598420384
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7610665980875529214}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2415695, y: 0.7845751, z: 2.1076517}
+  m_Center: {x: 3.1231613, y: 0.32313728, z: -0.06355381}
