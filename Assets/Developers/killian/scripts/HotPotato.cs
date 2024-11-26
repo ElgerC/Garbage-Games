@@ -1,7 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class HotPotato : MonoBehaviour
@@ -20,6 +17,7 @@ public class HotPotato : MonoBehaviour
     private float F_BombTimer = 10;
 
     private Vector3 V3_Offset = new Vector3(0, 2, 0);
+
     // Start is called before the first frame update
     void Start()
     {
