@@ -28,11 +28,17 @@ public class PlayerScript : MonoBehaviour
 
     Gamemanager gamemanager;
 
+    [SerializeField] private GameObject G_stepLower;
+    [SerializeField] private GameObject G_stepUpper;
+
+    [SerializeField] private float F_stepSmooth = 8f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         gamemanager = Gamemanager.instance;
         DontDestroyOnLoad(gameObject);
+
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -80,11 +86,16 @@ public class PlayerScript : MonoBehaviour
         canAct = true;
     }
 
-
-    void Update()
+    private void FixedUpdate()
     {
+        //StepClimb();
+    }
+    private void Update()
+    {
+        StepClimb();
+
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized * playerSpeed;
-        rb.MovePosition(transform.position + move);
+        rb.MovePosition(rb.position + move);
 
         if (move != Vector3.zero)
         {
@@ -103,5 +114,40 @@ public class PlayerScript : MonoBehaviour
             }
         else
             barrier.SetActive(false);
+
+    }
+
+    private void StepClimb() 
+    {
+        RaycastHit hitLower;
+        if (Physics.Raycast(G_stepLower.transform.position, transform.TransformDirection(Vector3.forward),out hitLower, 0.1f))
+        {
+            RaycastHit hitUpper;
+            if (!Physics.Raycast(G_stepUpper.transform.position, transform.TransformDirection(Vector3.forward), out hitUpper, 0.1f))
+            {
+                rb.position += new Vector3(0f, F_stepSmooth, 0f);
+                Debug.Log(rb.position);
+            }
+        }
+        RaycastHit hitLowerPlus45;
+        if (Physics.Raycast(G_stepLower.transform.position, transform.TransformDirection(1.5f, 0, 1), out hitLowerPlus45, 0.1f))
+        {
+            RaycastHit hitUpperPlus45;
+            if (!Physics.Raycast(G_stepUpper.transform.position, transform.TransformDirection(1.5f, 0, 1), out hitUpperPlus45, 0.1f))
+            {
+                rb.position += new Vector3(0f, F_stepSmooth, 0f);
+                Debug.Log(rb.position);
+            }
+        }
+        RaycastHit hitLowerMin45;
+        if (Physics.Raycast(G_stepLower.transform.position, transform.TransformDirection(-1.5f,0,1), out hitLowerMin45, 0.1f))
+        {
+            RaycastHit hitUpperMin45;
+            if (!Physics.Raycast(G_stepUpper.transform.position, transform.TransformDirection(-1.5f, 0, 1), out hitUpperMin45, 0.1f))
+            {
+                rb.position += new Vector3(0f, F_stepSmooth, 0f);
+                Debug.Log(rb.position);
+            }
+        }
     }
 }
