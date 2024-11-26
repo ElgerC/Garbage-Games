@@ -18,6 +18,9 @@ public class HotPotato : MonoBehaviour
 
     private Vector3 V3_Offset = new Vector3(0, 2, 0);
 
+    [SerializeField]
+    private Canvas BombTimer;
+
     // Start is called before the first frame update
     void Start()
     {
