@@ -38,9 +38,11 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         gamemanager = Gamemanager.instance;
         DontDestroyOnLoad(gameObject);
-
     }
-
+    private void Start()
+    {
+        gamemanager.AddPlayers(gameObject);
+    }
     public void OnMove(InputAction.CallbackContext context)
     {
         if (context.performed && gamemanager.S_curMinigame != "ElgerScene")
@@ -86,12 +88,9 @@ public class PlayerScript : MonoBehaviour
         canAct = true;
     }
 
-    private void FixedUpdate()
-    {
-        //StepClimb();
-    }
     private void Update()
     {
+        Debug.Log(playerSpeed);
         StepClimb();
 
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized * playerSpeed;
@@ -102,7 +101,7 @@ public class PlayerScript : MonoBehaviour
             gameObject.transform.forward = move;
         }
         if (gamemanager.S_curMinigame == "HotPotato")
-            if (rb.velocity.magnitude < 1 && rb.velocity.magnitude > -1)
+            if (rb.velocity.magnitude < 4f && rb.velocity.magnitude > -1f)
             {
                 rb.drag = 0;
                 barrier.SetActive(false);
@@ -126,7 +125,6 @@ public class PlayerScript : MonoBehaviour
             if (!Physics.Raycast(G_stepUpper.transform.position, transform.TransformDirection(Vector3.forward), out hitUpper, 0.1f))
             {
                 rb.position += new Vector3(0f, F_stepSmooth, 0f);
-                Debug.Log(rb.position);
             }
         }
         RaycastHit hitLowerPlus45;
@@ -136,7 +134,6 @@ public class PlayerScript : MonoBehaviour
             if (!Physics.Raycast(G_stepUpper.transform.position, transform.TransformDirection(1.5f, 0, 1), out hitUpperPlus45, 0.1f))
             {
                 rb.position += new Vector3(0f, F_stepSmooth, 0f);
-                Debug.Log(rb.position);
             }
         }
         RaycastHit hitLowerMin45;
@@ -146,7 +143,6 @@ public class PlayerScript : MonoBehaviour
             if (!Physics.Raycast(G_stepUpper.transform.position, transform.TransformDirection(-1.5f, 0, 1), out hitUpperMin45, 0.1f))
             {
                 rb.position += new Vector3(0f, F_stepSmooth, 0f);
-                Debug.Log(rb.position);
             }
         }
     }

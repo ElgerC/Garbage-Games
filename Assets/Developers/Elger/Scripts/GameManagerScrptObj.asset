@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MinigamesData:
   - startPositions:
-    - {x: -3, y: 0, z: 0}
-    - {x: -1, y: 0, z: 0}
-    - {x: 1, y: 0, z: 0}
-    - {x: 3, y: 0, z: 0}
+    - {x: 10.05, y: 15, z: 11.34}
+    - {x: 7.05, y: 15, z: 11.34}
+    - {x: 4.05, y: 15, z: 11.34}
+    - {x: 1.05, y: 15, z: 11.34}
   - startPositions:
-    - {x: -3, y: 4, z: 0}
-    - {x: -1, y: 4, z: 0}
-    - {x: 1, y: 4, z: 0}
-    - {x: 3, y: 4, z: 0}
+    - {x: 1, y: 1.5, z: 0}
+    - {x: -5, y: 1.5, z: 19}
+    - {x: -15, y: 1.5, z: 2}
+    - {x: -25, y: 4.5, z: 20}
   - startPositions:
     - {x: -3, y: 4, z: 0}
     - {x: -1, y: 4, z: 0}

@@ -14,8 +14,9 @@ public class Gamemanager : MonoBehaviour
     public List<GameObject> players = new List<GameObject>();
     public List<string> minigames = new List<string>();
 
-    public string S_curMinigame = "ElgerScene";
+    public List<GameObject> L_models = new List<GameObject>();
 
+    public string S_curMinigame = "ElgerScene";
 
     [SerializeField] private TMP_Text Txt_timerTxt;
 
@@ -36,17 +37,18 @@ public class Gamemanager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void AddPlayers()
+    public void AddPlayers(GameObject newPlayer)
     {
-        Debug.Log("Adding players");
+        Debug.Log("Adding player");
 
-        players.Clear();
-        PlayerScript[] playerScripts = FindObjectsOfType<PlayerScript>();
-        for (int i = 0; i < playerScripts.Length; i++)
-        {
-            players.Add(playerScripts[i].gameObject);
-            playerScripts[i].transform.position = gameManagerData.m_MinigamesData[minigameIndex].startPositions[i];
-        }
+        players.Add(newPlayer);
+
+        int modelIndex = UnityEngine.Random.Range(0, L_models.Count-1);
+        Instantiate(L_models[modelIndex], new Vector3(0, -0.5f, 0), Quaternion.Euler(0, 90, 0), newPlayer.transform);
+        L_models.RemoveAt(modelIndex);
+
+        newPlayer.transform.position = gameManagerData.m_MinigamesData[minigameIndex].startPositions[players.Count-1];
+
     }
     private void OnEnable()
     {
@@ -91,7 +93,7 @@ public class Gamemanager : MonoBehaviour
             B_countingDown = false;
             Txt_timerTxt.text = "0";
         }
-            
+
     }
     IEnumerator Countdown(int time)
     {
