@@ -27,6 +27,7 @@ public class HotPotatoPlayer : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         TransferPotato(collision.gameObject);
+        Debug.Log("test");
     }
     public void TransferPotato(GameObject obj)
     {
