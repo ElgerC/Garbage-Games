@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class HotPotato : MonoBehaviour
 {
     [SerializeField]
@@ -14,16 +14,17 @@ public class HotPotato : MonoBehaviour
     private int I_PlayersLeft = 4;
 
     [SerializeField]
-    private float F_BombTimer = 10;
+    private float F_BombTimer = 10f;
 
     private Vector3 V3_Offset = new Vector3(0, 2, 0);
 
     [SerializeField]
-    private Canvas BombTimer;
+    private TextMeshProUGUI T_BombTimer;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         for (int i = 0; i < FindObjectsOfType<PlayerScript>().Length; i++)
         {
             GO_Players.Add(FindObjectsOfType<PlayerScript>()[i].gameObject);
@@ -42,6 +43,7 @@ public class HotPotato : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        T_BombTimer.text = F_BombTimer.ToString();
         if (GO_Players.Count > 1)
         {
             F_BombTimer -= Time.deltaTime;
