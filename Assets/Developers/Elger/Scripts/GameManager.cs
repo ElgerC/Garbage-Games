@@ -43,11 +43,11 @@ public class Gamemanager : MonoBehaviour
 
         players.Add(newPlayer);
 
-        int modelIndex = UnityEngine.Random.Range(0, L_models.Count-1);
+        int modelIndex = UnityEngine.Random.Range(0, L_models.Count - 1);
         Instantiate(L_models[modelIndex], new Vector3(0, -0.5f, 0), Quaternion.Euler(0, 90, 0), newPlayer.transform);
         L_models.RemoveAt(modelIndex);
 
-        newPlayer.transform.position = gameManagerData.m_MinigamesData[minigameIndex].startPositions[players.Count-1];
+        newPlayer.transform.position = gameManagerData.m_MinigamesData[minigameIndex].startPositions[players.Count - 1];
 
     }
     private void OnEnable()
@@ -67,18 +67,23 @@ public class Gamemanager : MonoBehaviour
     }
     public string ChooseScene()
     {
-        if (SceneManager.GetActiveScene().name != "StartScene")
-        {
-            minigames.Remove(SceneManager.GetActiveScene().name);
-        }
-
         minigameIndex = UnityEngine.Random.Range(1, minigames.Count);
         S_curMinigame = minigames[minigameIndex];
         return S_curMinigame;
     }
-    public void MinigameFinished()
+    public void MinigameFinished(int winner)
     {
-        SceneManager.LoadScene(ChooseScene());
+        if (winner < players.Count)
+        {
+            players[winner].GetComponent<PlayerScript>().wins++;
+        }
+
+        minigames.Remove(SceneManager.GetActiveScene().name);
+
+        SceneManager.LoadScene("ElgerScene");
+        minigameIndex = 0;
+
+        StartCoroutine(Countdown(5));
     }
 
     public void Ready()
@@ -104,7 +109,7 @@ public class Gamemanager : MonoBehaviour
                 Txt_timerTxt.text = i.ToString();
             yield return new WaitForSeconds(time / time);
         }
-        MinigameFinished();
+        SceneManager.LoadScene(ChooseScene());
         B_countingDown = false;
     }
 }

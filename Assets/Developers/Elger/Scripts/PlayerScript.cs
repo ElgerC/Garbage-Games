@@ -33,11 +33,17 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private float F_stepSmooth = 8f;
 
+    public GameObject G_golfBall;
+
+    public int wins = 0;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         gamemanager = Gamemanager.instance;
         DontDestroyOnLoad(gameObject);
+
+        transform.tag = "player" + (gamemanager.players.Count + 1);
     }
     private void Start()
     {
@@ -53,7 +59,21 @@ public class PlayerScript : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (context.performed && canAct)
+        if(G_golfBall != null && gamemanager.S_curMinigame == "MiniGolf")
+        {
+            if (context.started)
+            {
+                G_golfBall.GetComponent<BallScript>().LockRotation();
+            }
+
+            else if (context.canceled)
+            {
+                G_golfBall.GetComponent<BallScript>().Launch();
+            }
+        }
+        
+
+        else if (context.performed && canAct)
         {
             Debug.Log(gamemanager.S_curMinigame);
             switch (gamemanager.S_curMinigame)
@@ -71,6 +91,7 @@ public class PlayerScript : MonoBehaviour
                 default: break;
             }
         }
+
     }
 
     public void OnReady(InputAction.CallbackContext ctx)
@@ -90,7 +111,6 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(playerSpeed);
         StepClimb();
 
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized * playerSpeed;
@@ -116,10 +136,10 @@ public class PlayerScript : MonoBehaviour
 
     }
 
-    private void StepClimb() 
+    private void StepClimb()
     {
         RaycastHit hitLower;
-        if (Physics.Raycast(G_stepLower.transform.position, transform.TransformDirection(Vector3.forward),out hitLower, 0.1f))
+        if (Physics.Raycast(G_stepLower.transform.position, transform.TransformDirection(Vector3.forward), out hitLower, 0.1f))
         {
             RaycastHit hitUpper;
             if (!Physics.Raycast(G_stepUpper.transform.position, transform.TransformDirection(Vector3.forward), out hitUpper, 0.1f))
@@ -137,7 +157,7 @@ public class PlayerScript : MonoBehaviour
             }
         }
         RaycastHit hitLowerMin45;
-        if (Physics.Raycast(G_stepLower.transform.position, transform.TransformDirection(-1.5f,0,1), out hitLowerMin45, 0.1f))
+        if (Physics.Raycast(G_stepLower.transform.position, transform.TransformDirection(-1.5f, 0, 1), out hitLowerMin45, 0.1f))
         {
             RaycastHit hitUpperMin45;
             if (!Physics.Raycast(G_stepUpper.transform.position, transform.TransformDirection(-1.5f, 0, 1), out hitUpperMin45, 0.1f))

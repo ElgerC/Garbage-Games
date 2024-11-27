@@ -16,6 +16,9 @@ public class BallScript : MonoBehaviour
     private bool B_SavedRot = false;
 
     private GameObject G_Pivot;
+
+    public bool B_landed = false;
+    public bool B_Lauched = false;  
     private void Awake()
     {
         RB_rb = GetComponent<Rigidbody>();
@@ -31,28 +34,27 @@ public class BallScript : MonoBehaviour
     }
     public void Launch()
     {
-        V3_direction = transform.forward * F_speed * G_Pivot.transform.GetChild(0).localScale.z;
-        Debug.Log(RB_rb.velocity);
+        if (!B_Lauched)
+        {
+            Debug.Log("Launch");
+            V3_direction = -G_Pivot.transform.forward * F_speed * G_Pivot.transform.GetChild(0).localScale.z;
+            
 
-        Anim_animator.enabled = false;
-        G_Pivot.SetActive(false);
+            Anim_animator.enabled = false;
+            G_Pivot.SetActive(false);
 
-        
-        RB_rb.AddForce(V3_direction);
+            RB_rb.AddForce(V3_direction);
+            B_Lauched = true;
+        }
     }
     private void Update()
     {
-        if(RB_rb.velocity.magnitude < MinSpeed.magnitude)
+        if(RB_rb.velocity.magnitude < MinSpeed.magnitude && B_Lauched && RB_rb.velocity.magnitude > 0f)
         {
             RB_rb.velocity = Vector3.zero;
+            B_landed = true;
         }
-        if(Input.GetMouseButtonDown(0))
-        {
-            LockRotation();
-        } else if (Input.GetMouseButtonUp(0))
-        {
-            Launch();
-        }
+
         if(B_SavedRot)
         {
             transform.rotation = Q_SavedRotation;

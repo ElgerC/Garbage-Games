@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - MultiplayerManager
+  - Barrier
+  - player1
+  - player2
+  - player3
+  - player4
   layers:
   - Default
   - TransparentFX
