@@ -65,9 +65,9 @@ public class BallScript : MonoBehaviour
 
         if (B_Lauched)
         {
-            float xRot = transform.rotation.x + RB_rb.velocity.normalized.x * 60;
-            float yRot = transform.rotation.y + RB_rb.velocity.normalized.y * 60 + 180;
-            float zRot = transform.rotation.z + RB_rb.velocity.normalized.z * 60;
+            float xRot = transform.rotation.x + RB_rb.velocity.x * 60;
+            float yRot = transform.rotation.y + RB_rb.velocity.y * 60;
+            float zRot = transform.rotation.z + RB_rb.velocity.z * 60;
 
             Debug.Log(xRot);
             transform.rotation = Quaternion.Euler(xRot, yRot, zRot);
