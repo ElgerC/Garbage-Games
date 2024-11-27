@@ -219,6 +219,7 @@ MonoBehaviour:
   F_speed: 2000
   Q_SavedRotation: {x: 0, y: 0, z: 0, w: 0}
   B_landed: 0
+  B_Lauched: 0
 --- !u!135 &1921730863063574269
 SphereCollider:
   m_ObjectHideFlags: 0

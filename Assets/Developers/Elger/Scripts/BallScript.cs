@@ -51,13 +51,34 @@ public class BallScript : MonoBehaviour
     {
         if(RB_rb.velocity.magnitude < MinSpeed.magnitude && B_Lauched && RB_rb.velocity.magnitude > 0f)
         {
-            RB_rb.velocity = Vector3.zero;
-            B_landed = true;
+            RB_rb.velocity = Vector3.zero;            
+        }
+        if(RB_rb.velocity == Vector3.zero && B_Lauched)
+        {
+            StartCoroutine(minTime());
         }
 
         if(B_SavedRot)
         {
             transform.rotation = Q_SavedRotation;
+        }
+
+        if (B_Lauched)
+        {
+            float xRot = transform.rotation.x + RB_rb.velocity.normalized.x * 60;
+            float yRot = transform.rotation.y + RB_rb.velocity.normalized.y * 60 + 180;
+            float zRot = transform.rotation.z + RB_rb.velocity.normalized.z * 60;
+
+            Debug.Log(xRot);
+            transform.rotation = Quaternion.Euler(xRot, yRot, zRot);
+        }      
+    }
+    private IEnumerator minTime()
+    {
+        yield return new WaitForSeconds(2);
+        if (RB_rb.velocity == Vector3.zero && B_Lauched)
+        {
+            B_landed = true;
         }
     }
 }

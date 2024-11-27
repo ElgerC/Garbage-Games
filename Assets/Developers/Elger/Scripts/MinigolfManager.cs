@@ -18,10 +18,11 @@ public class MinigolfManager : MonoBehaviour
     private GameObject G_curBall;
     private BallScript BS_curBallScript;
     private Rigidbody RB_curBallRb;
+    private int I_ballIndex = 0;
 
     [SerializeField] private golfStates state = golfStates.Waiting;
 
-    private int I_ballIndex = 0;
+    [SerializeField] private Vector3 V3_offSet;
 
     [SerializeField] private GameObject G_goal;
 
@@ -55,7 +56,7 @@ public class MinigolfManager : MonoBehaviour
         int winner = 8;
         for (int i = 0; i < L_balls.Count; i++)
         {
-            if (Vector3.Distance(L_balls[i].transform.position,G_goal.transform.position) > dist)
+            if (Vector3.Distance(L_balls[i].transform.position, G_goal.transform.position) > dist)
             {
                 dist = Vector3.Distance(L_balls[i].transform.position, G_goal.transform.position);
                 winner = i;
@@ -72,11 +73,21 @@ public class MinigolfManager : MonoBehaviour
         {
             case golfStates.Waiting:
                 SpawnBall();
-                
                 break;
             case golfStates.Busy:
-                Debug.Log(BS_curBallScript.B_landed);
-                if (BS_curBallScript.B_landed && RB_curBallRb.velocity.magnitude == 0)
+                if (!BS_curBallScript.B_Lauched)
+                {
+                    Camera.main.transform.position = G_curBall.transform.position + V3_offSet;
+                    Camera.main.transform.rotation = Quaternion.Euler(14.5f, 0, 0);
+                }
+                else
+                {
+                    Camera.main.transform.position = new Vector3(1.17f, 12.2f, -15.9f);
+                    Camera.main.transform.LookAt(G_curBall.transform.position);
+                }
+                    
+
+                if (BS_curBallScript.B_landed)
                 {
                     if (I_ballIndex == Gamemanager.instance.players.Count)
                     {
