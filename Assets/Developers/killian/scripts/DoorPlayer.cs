@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using UnityEditor;
 using UnityEngine;
 
 public class DoorPlayer : MonoBehaviour
@@ -14,32 +16,47 @@ public class DoorPlayer : MonoBehaviour
         DoorMinigame = FindObjectOfType<DoorMinigame>();
     }
 
-    // Update is called once per frame
-    public void Update()
-    {
-        
-    }
-
+    // actual collision check
     public void OnCollisionEnter(Collision collision)
     {
-        TeleportPlayer();
+        FloorTeleport(collision.gameObject);
     }
 
-    public void TeleportPlayer()
+    //not sure if needed, but scared to remove incase it breaks everything
+    public void FloorTeleport(GameObject CorrectDoor)
     {
-        StartCoroutine(NextFloor());
+        StartCoroutine(NextFloor(CorrectDoor));
     }
 
-    public IEnumerator NextFloor()
+    //teleports the player when the door is correct to the nexxt floor, switch statement checks the current from on the character and teleports to them to the correct floor.
+    public IEnumerator NextFloor(GameObject Door)
     {
         yield return new WaitForSeconds(0.1f);
 
-        for (int i = 0; i < DoorMinigame.GO_DoorsF1.Length; i++)
+        if( Door.GetComponent<DoorMinigameDoors>().CorrectDoor == true)
         {
-            if ( i == DoorMinigame.I_CorrectDoorF1)
+            switch (CurrentFloor)
             {
-                transform.position = DoorMinigame.GO_FloorsTeleports[0].transform.position;
-                CurrentFloor--;
+                case 5:
+                    transform.position = DoorMinigame.GO_FloorsTeleports[0].transform.position;
+                    CurrentFloor--;
+                    break;
+                case 4:
+                    transform.position = DoorMinigame.GO_FloorsTeleports[1].transform.position;
+                    CurrentFloor--;
+                    break;
+                case 3:
+                    transform.position = DoorMinigame.GO_FloorsTeleports[2].transform.position;
+                    CurrentFloor--;
+                    break;
+                case 2:
+                    transform.position = DoorMinigame.GO_FloorsTeleports[3].transform.position;
+                    CurrentFloor--;
+                    break;
+                case 1:
+                    transform.position = DoorMinigame.GO_FloorsTeleports[4].transform.position;
+                    CurrentFloor--;
+                    break;
             }
         }
     }
