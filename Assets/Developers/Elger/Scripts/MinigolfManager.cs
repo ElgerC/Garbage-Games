@@ -28,6 +28,8 @@ public class MinigolfManager : MonoBehaviour
 
     public static MinigolfManager instance;
 
+    [SerializeField] private GameObject temp;
+
     private void Awake()
     {
         if (instance == null)
@@ -40,6 +42,7 @@ public class MinigolfManager : MonoBehaviour
     private void SpawnBall()
     {
         G_curBall = Instantiate(G_ballPrefab, V3_startPos, Quaternion.Euler(0, 180, 0));
+        G_curBall.GetComponent<MeshRenderer>().material.color = Gamemanager.instance.colorList[I_ballIndex];
 
         BS_curBallScript = G_curBall.GetComponent<BallScript>();
         RB_curBallRb = G_curBall.GetComponent<Rigidbody>();
@@ -63,7 +66,11 @@ public class MinigolfManager : MonoBehaviour
             }
         }
 
-        Gamemanager.instance.MinigameFinished(winner);
+        Camera.main.transform.position = Gamemanager.instance.players[winner].GetComponent<PlayerScript>().G_golfBall.transform.position + V3_offSet;
+        Camera.main.transform.rotation = Quaternion.Euler(14.5f, 0, 0);
+
+        temp.SetActive(true);
+        StartCoroutine(wait(winner));
 
         state = golfStates.Done;
     }
@@ -106,4 +113,9 @@ public class MinigolfManager : MonoBehaviour
         }
     }
 
+    IEnumerator wait(int winner)
+    {
+        yield return new WaitForSeconds(4);
+        Gamemanager.instance.MinigameFinished(winner);
+    }
 }

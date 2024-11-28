@@ -37,7 +37,7 @@ public class BallScript : MonoBehaviour
         if (!B_Lauched)
         {
             Debug.Log("Launch");
-            V3_direction = -G_Pivot.transform.forward * F_speed * G_Pivot.transform.GetChild(0).localScale.z;
+            V3_direction = -G_Pivot.transform.forward * F_speed * (G_Pivot.transform.GetChild(0).localScale.z*2);
             
 
             Anim_animator.enabled = false;
