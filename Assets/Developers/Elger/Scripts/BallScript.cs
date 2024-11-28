@@ -37,7 +37,7 @@ public class BallScript : MonoBehaviour
         if (!B_Lauched)
         {
             Debug.Log("Launch");
-            V3_direction = -G_Pivot.transform.forward * F_speed * (G_Pivot.transform.GetChild(0).localScale.z*2);
+            V3_direction = -G_Pivot.transform.forward * F_speed * (G_Pivot.transform.GetChild(0).localScale.z*3);
             
 
             Anim_animator.enabled = false;
@@ -69,7 +69,6 @@ public class BallScript : MonoBehaviour
             float yRot = transform.rotation.y + RB_rb.velocity.y * 60;
             float zRot = transform.rotation.z + RB_rb.velocity.z * 60;
 
-            Debug.Log(xRot);
             transform.rotation = Quaternion.Euler(xRot, yRot, zRot);
         }      
     }

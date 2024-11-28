@@ -51,7 +51,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (context.performed && gamemanager.S_curMinigame != "ElgerScene")
+        if (context.performed && gamemanager.S_curMinigame == "HotPotato")
         {
             movementInput = context.ReadValue<Vector2>();
         }
@@ -133,6 +133,10 @@ public class PlayerScript : MonoBehaviour
             }
         else
             barrier.SetActive(false);
+        if(gamemanager.S_curMinigame == "MiniGolf")
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        } 
 
     }
 
