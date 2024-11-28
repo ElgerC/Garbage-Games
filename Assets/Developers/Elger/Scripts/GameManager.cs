@@ -26,6 +26,8 @@ public class Gamemanager : MonoBehaviour
 
     [SerializeField] private GamaManagerScrptObj gameManagerData;
 
+    public List<Color> colorList = new List<Color>();
+
     private void Awake()
     {
 
@@ -35,6 +37,7 @@ public class Gamemanager : MonoBehaviour
             Destroy(this);
 
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(Txt_timerTxt.transform.parent);
     }
 
     public void AddPlayers(GameObject newPlayer)
@@ -60,8 +63,11 @@ public class Gamemanager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Txt_timerTxt.gameObject.SetActive(false);
+
         for (int i = 0; i < players.Count; i++)
         {
+            players[i].SetActive(true);
             players[i].transform.position = gameManagerData.m_MinigamesData[minigameIndex].startPositions[i];
         }
     }
@@ -83,8 +89,15 @@ public class Gamemanager : MonoBehaviour
 
         SceneManager.LoadScene("ElgerScene");
         minigameIndex = 0;
-
-        StartCoroutine(Countdown(5));
+        if (minigames.Count > 0) 
+        {
+            StartCoroutine(Countdown(5));
+        } else
+        {
+            Txt_timerTxt.gameObject.SetActive(true);
+            Txt_timerTxt.text = "Winner";
+        }
+        
     }
 
     public void Ready()
@@ -92,9 +105,14 @@ public class Gamemanager : MonoBehaviour
         Debug.Log(B_countingDown);
 
         if (!B_countingDown)
-            StartCoroutine(Countdown(5));
+        {
+            Txt_timerTxt.gameObject.SetActive(true);
+            StartCoroutine(Countdown(6));
+        }
+            
         else
         {
+            Txt_timerTxt.gameObject.SetActive(false);
             StopAllCoroutines();
             B_countingDown = false;
             Txt_timerTxt.text = "0";
