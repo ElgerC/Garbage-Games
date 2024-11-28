@@ -31,7 +31,7 @@ public class HotPotatoPlayer : MonoBehaviour
     }
     public void TransferPotato(GameObject obj)
     {
-        if (B_HasBomb && obj.transform.tag == "Player")
+        if (B_HasBomb && obj.transform.tag == "player1" || obj.transform.tag == "player4" || obj.transform.tag == "player3" || obj.transform.tag == "player2")
         {
             StartCoroutine(BombPassDown(obj));
             Debug.Log("switched");
