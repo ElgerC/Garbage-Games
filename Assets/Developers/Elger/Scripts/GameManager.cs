@@ -75,6 +75,7 @@ public class Gamemanager : MonoBehaviour
     {
         if (winner < players.Count)
         {
+            //players.FindInstanceID<GameObject>(gameObject);
             players[winner].GetComponent<PlayerScript>().wins++;
         }
 
