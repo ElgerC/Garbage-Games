@@ -5,6 +5,7 @@ using Unity.Mathematics;
 
 enum golfStates
 {
+    Starting,
     Waiting,
     Busy,
     Checking,
@@ -21,7 +22,7 @@ public class MinigolfManager : MonoBehaviour
     private Rigidbody RB_curBallRb;
     private int I_ballIndex = 0;
 
-    [SerializeField] private golfStates state = golfStates.Waiting;
+    [SerializeField] private golfStates state = golfStates.Starting;
 
     [SerializeField] private Vector3 V3_offSet;
 
@@ -60,6 +61,11 @@ public class MinigolfManager : MonoBehaviour
 
         state = golfStates.Busy;
     }
+    public void FinishedStartAnim()
+    {
+        ANIM_CamAnim.enabled = false;
+        state = golfStates.Waiting;
+    }
 
     private void Update()
     {
@@ -94,14 +100,16 @@ public class MinigolfManager : MonoBehaviour
                 }
                 break;
             case golfStates.Checking:
-                MakeLine();
                 ANIM_CamAnim.enabled = true;
                 ANIM_CamAnim.SetTrigger("End");
+                MakeLine();
                 break;
         }
     }
     public void CheckWinner()
     {
+        ANIM_CamAnim.enabled = false;
+
         float dist = 0;
         int winner = 8;
         for (int i = 0; i < L_balls.Count; i++)

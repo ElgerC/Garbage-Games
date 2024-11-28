@@ -35,6 +35,9 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject G_golfBall;
 
+    public Color C_playerColor;
+    public GameObject G_namecard;
+
     public int wins = 0;
 
     private void Awake()
@@ -169,5 +172,10 @@ public class PlayerScript : MonoBehaviour
                 rb.position += new Vector3(0f, F_stepSmooth, 0f);
             }
         }
+    }
+
+    public void ChangeApearance(GameObject G_newModel,GameObject G_)
+    {
+
     }
 }

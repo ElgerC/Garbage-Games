@@ -14,7 +14,7 @@ public class Gamemanager : MonoBehaviour
     public List<GameObject> players = new List<GameObject>();
     public List<string> minigames = new List<string>();
 
-    public List<GameObject> L_models = new List<GameObject>();
+
 
     public string S_curMinigame = "ElgerScene";
 
@@ -27,7 +27,9 @@ public class Gamemanager : MonoBehaviour
     [SerializeField] private GamaManagerScrptObj gameManagerData;
 
     public List<Color> colorList = new List<Color>();
+    public List<GameObject> L_models = new List<GameObject>();
 
+    [SerializeField] private List<PlayerApearanceScrptObj> L_apearances = new List<PlayerApearanceScrptObj>();
     private void Awake()
     {
 
@@ -39,19 +41,32 @@ public class Gamemanager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(Txt_timerTxt.transform.parent);
     }
+    public void ChangeApearance(GameObject player)
+    {
+        int apearanceIndex = UnityEngine.Random.Range(0, L_apearances.Count - 1);
+        Instantiate(L_apearances[apearanceIndex].G_model, new Vector3(0, -0.5f, 0), Quaternion.Euler(0, 90, 0), player.transform);
 
+        PlayerScript PS_playerScript = player.GetComponent<PlayerScript>();
+
+        PS_playerScript.C_playerColor = L_apearances[apearanceIndex].C_color;
+        PS_playerScript.G_namecard = L_apearances[apearanceIndex].G_namecard;
+    }
     public void AddPlayers(GameObject newPlayer)
     {
         Debug.Log("Adding player");
 
         players.Add(newPlayer);
 
+
+
+
+
+
         int modelIndex = UnityEngine.Random.Range(0, L_models.Count - 1);
         Instantiate(L_models[modelIndex], new Vector3(0, -0.5f, 0), Quaternion.Euler(0, 90, 0), newPlayer.transform);
         L_models.RemoveAt(modelIndex);
 
         newPlayer.transform.position = gameManagerData.m_MinigamesData[minigameIndex].startPositions[players.Count - 1];
-
     }
     private void OnEnable()
     {
