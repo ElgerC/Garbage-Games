@@ -26,22 +26,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 90adff141e589cb47a3adbe402f7abd0,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.2647595
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90adff141e589cb47a3adbe402f7abd0,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90adff141e589cb47a3adbe402f7abd0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.96431446
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90adff141e589cb47a3adbe402f7abd0,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90adff141e589cb47a3adbe402f7abd0,
         type: 3}
@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 90adff141e589cb47a3adbe402f7abd0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 149.295
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90adff141e589cb47a3adbe402f7abd0,
         type: 3}
@@ -71,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 90adff141e589cb47a3adbe402f7abd0,
         type: 3}
       propertyPath: m_Name
-      value: garbage truck
+      value: P_garbagetruck
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
