@@ -21,6 +21,12 @@ public class HotPotato : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI T_BombTimer;
 
+    Gamemanager gamemanager;
+
+    private void Awake()
+    {
+        gamemanager =  Gamemanager.instance;
+    }
     // Start is called before the first frame update
     void Start()
     {

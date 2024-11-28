@@ -1593,8 +1593,8 @@ GameObject:
   - component: {fileID: 643725089}
   - component: {fileID: 643725088}
   - component: {fileID: 643725087}
-  - component: {fileID: 643725091}
   - component: {fileID: 643725092}
+  - component: {fileID: 643725093}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1688,21 +1688,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1676732842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &643725091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 643725086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91e84bb7504a3ab42a804e8aab0c0f61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HotPotato: {fileID: 0}
-  I_PlayerIndex: 0
-  B_HasBomb: 0
 --- !u!54 &643725092
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1730,6 +1715,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &643725093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643725086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd7c1db9bcd0114a9fb505ceb45f42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpeed: 0
+  state: 0
+  canAct: 1
+  dashSpeed: 0
+  barrier: {fileID: 0}
+  G_stepLower: {fileID: 0}
+  G_stepUpper: {fileID: 0}
+  F_stepSmooth: 8
+  G_golfBall: {fileID: 0}
+  wins: 0
 --- !u!1 &668353048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2189,8 +2196,8 @@ GameObject:
   - component: {fileID: 781067066}
   - component: {fileID: 781067065}
   - component: {fileID: 781067064}
-  - component: {fileID: 781067068}
   - component: {fileID: 781067069}
+  - component: {fileID: 781067070}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -2284,21 +2291,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1676732842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &781067068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781067063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91e84bb7504a3ab42a804e8aab0c0f61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HotPotato: {fileID: 0}
-  I_PlayerIndex: 0
-  B_HasBomb: 0
 --- !u!54 &781067069
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2326,6 +2318,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &781067070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781067063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd7c1db9bcd0114a9fb505ceb45f42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpeed: 0
+  state: 0
+  canAct: 1
+  dashSpeed: 0
+  barrier: {fileID: 0}
+  G_stepLower: {fileID: 0}
+  G_stepUpper: {fileID: 0}
+  F_stepSmooth: 8
+  G_golfBall: {fileID: 0}
+  wins: 0
 --- !u!1 &787274542
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,8 +2933,8 @@ GameObject:
   - component: {fileID: 1200014910}
   - component: {fileID: 1200014909}
   - component: {fileID: 1200014908}
-  - component: {fileID: 1200014912}
   - component: {fileID: 1200014913}
+  - component: {fileID: 1200014914}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -3014,21 +3028,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1676732842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1200014912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1200014907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91e84bb7504a3ab42a804e8aab0c0f61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HotPotato: {fileID: 0}
-  I_PlayerIndex: 0
-  B_HasBomb: 0
 --- !u!54 &1200014913
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3056,6 +3055,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1200014914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200014907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd7c1db9bcd0114a9fb505ceb45f42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpeed: 0
+  state: 0
+  canAct: 1
+  dashSpeed: 0
+  barrier: {fileID: 0}
+  G_stepLower: {fileID: 0}
+  G_stepUpper: {fileID: 0}
+  F_stepSmooth: 8
+  G_golfBall: {fileID: 0}
+  wins: 0
 --- !u!1 &1213947564
 GameObject:
   m_ObjectHideFlags: 0
@@ -4060,7 +4081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1498264118
 Transform:
   m_ObjectHideFlags: 0
@@ -4320,6 +4341,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CorrectDoor: 0
+--- !u!1 &1563193413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1563193415}
+  - component: {fileID: 1563193414}
+  m_Layer: 0
+  m_Name: gamemanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1563193414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563193413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa8c8a32d38552c4da381ff77c6078bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []
+  minigames: []
+  L_models: []
+  S_curMinigame: ElgerScene
+  Txt_timerTxt: {fileID: 0}
+  gameManagerData: {fileID: 0}
+--- !u!4 &1563193415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563193413}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.732112, y: 13.047506, z: -12.175477}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1651548398
 GameObject:
   m_ObjectHideFlags: 0
@@ -4559,7 +4630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1676732842
 Transform:
   m_ObjectHideFlags: 0
@@ -5239,8 +5310,8 @@ GameObject:
   - component: {fileID: 2056020632}
   - component: {fileID: 2056020631}
   - component: {fileID: 2056020630}
-  - component: {fileID: 2056020634}
   - component: {fileID: 2056020635}
+  - component: {fileID: 2056020636}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -5334,21 +5405,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1676732842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2056020634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2056020629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91e84bb7504a3ab42a804e8aab0c0f61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HotPotato: {fileID: 0}
-  I_PlayerIndex: 0
-  B_HasBomb: 0
 --- !u!54 &2056020635
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5376,6 +5432,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &2056020636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056020629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd7c1db9bcd0114a9fb505ceb45f42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpeed: 0
+  state: 0
+  canAct: 1
+  dashSpeed: 0
+  barrier: {fileID: 0}
+  G_stepLower: {fileID: 0}
+  G_stepUpper: {fileID: 0}
+  F_stepSmooth: 8
+  G_golfBall: {fileID: 0}
+  wins: 0
 --- !u!1 &2141090511
 GameObject:
   m_ObjectHideFlags: 0
@@ -5523,3 +5601,4 @@ SceneRoots:
   - {fileID: 1399451287}
   - {fileID: 1195597975}
   - {fileID: 1498264118}
+  - {fileID: 1563193415}
