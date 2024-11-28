@@ -24,7 +24,7 @@ public class HotPotato : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
         for (int i = 0; i < FindObjectsOfType<PlayerScript>().Length; i++)
         {
             GO_Players.Add(FindObjectsOfType<PlayerScript>()[i].gameObject);
@@ -59,7 +59,7 @@ public class HotPotato : MonoBehaviour
             {
                 if (GO_Players[i].GetComponent<HotPotatoPlayer>().GetBomb())
                 {
-                    GO_Players [i].SetActive(false);
+                    GO_Players[i].SetActive(false);
                     GO_Players.Remove(GO_Players[i]);
                 }
             }
@@ -80,9 +80,11 @@ public class HotPotato : MonoBehaviour
             }
         }
 
-        if(I_PlayersLeft == 1)
+        if (I_PlayersLeft == 1)
         {
-            Gamemanager.instance.MinigameFinished();
+            Gamemanager.instance.MinigameFinished(8);
+
+            GO_Players[0].GetComponent<PlayerScript>().wins++;
         }
     }
 }
