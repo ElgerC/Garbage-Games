@@ -59,7 +59,7 @@ public class HotPotato : MonoBehaviour
             {
                 if (GO_Players[i].GetComponent<HotPotatoPlayer>().GetBomb())
                 {
-                    Destroy(GO_Players[i]);
+                    GO_Players [i].SetActive(false);
                     GO_Players.Remove(GO_Players[i]);
                 }
             }
@@ -78,6 +78,11 @@ public class HotPotato : MonoBehaviour
                 GO_Bombprefab.transform.position = GO_Players[i].transform.position + V3_Offset;
                 break;
             }
+        }
+
+        if(I_PlayersLeft == 1)
+        {
+            Gamemanager.instance.MinigameFinished();
         }
     }
 }
