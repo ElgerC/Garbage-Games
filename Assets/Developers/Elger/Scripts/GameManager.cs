@@ -87,8 +87,9 @@ public class Gamemanager : MonoBehaviour
 
         minigames.Remove(SceneManager.GetActiveScene().name);
 
-        SceneManager.LoadScene("ElgerScene");
         minigameIndex = 0;
+        SceneManager.LoadScene("ElgerScene");
+        
         if (minigames.Count > 0) 
         {
             StartCoroutine(Countdown(5));

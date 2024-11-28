@@ -69,7 +69,6 @@ public class BallScript : MonoBehaviour
             float yRot = transform.rotation.y + RB_rb.velocity.y * 60;
             float zRot = transform.rotation.z + RB_rb.velocity.z * 60;
 
-            Debug.Log(xRot);
             transform.rotation = Quaternion.Euler(xRot, yRot, zRot);
         }      
     }
