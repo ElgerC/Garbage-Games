@@ -118,10 +118,14 @@ public class PlayerScript : MonoBehaviour
 
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized * playerSpeed;
         rb.MovePosition(rb.position + move);
+        if(gamemanager.S_curMinigame == "ElgerScene")
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
 
         if (move != Vector3.zero)
         {
-            gameObject.transform.forward = move;
+            rb.velocity = move;
         }
         if (gamemanager.S_curMinigame == "HotPotato")
             if (rb.velocity.magnitude < 4f && rb.velocity.magnitude > -1f)

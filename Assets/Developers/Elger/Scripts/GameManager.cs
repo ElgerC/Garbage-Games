@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -103,9 +104,10 @@ public class Gamemanager : MonoBehaviour
         minigames.Remove(SceneManager.GetActiveScene().name);
 
         minigameIndex = 0;
+        S_curMinigame = "ElgerScene";
         SceneManager.LoadScene("ElgerScene");
         
-        if (minigames.Count > 0) 
+        if (minigames.Count > 1) 
         {
             StartCoroutine(Countdown(5));
         } else
@@ -137,14 +139,15 @@ public class Gamemanager : MonoBehaviour
     }
     IEnumerator Countdown(int time)
     {
+        Txt_timerTxt.gameObject.SetActive (true);
         B_countingDown = true;
         for (int i = 0; i < time; i++)
         {
-            if (Txt_timerTxt)
                 Txt_timerTxt.text = i.ToString();
             yield return new WaitForSeconds(time / time);
         }
         SceneManager.LoadScene(ChooseScene());
+        Txt_timerTxt.gameObject.SetActive(false);
         B_countingDown = false;
     }
 }
