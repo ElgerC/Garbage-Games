@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Gamemanager : MonoBehaviour
 {
@@ -33,14 +34,12 @@ public class Gamemanager : MonoBehaviour
     [SerializeField] private List<PlayerApearanceScrptObj> L_apearances = new List<PlayerApearanceScrptObj>();
     private void Awake()
     {
-
         if (instance == null)
             instance = this;
         else
             Destroy(this);
 
         DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(Txt_timerTxt.transform.parent);
     }
     public void ChangeApearance(GameObject player)
     {
@@ -79,7 +78,10 @@ public class Gamemanager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Txt_timerTxt.gameObject.SetActive(false);
+        if (S_curMinigame == "ElgerScene")
+        {
+            Txt_timerTxt = GameObject.FindWithTag("Countdown").GetComponent<TMP_Text>();
+        }
 
         for (int i = 0; i < players.Count; i++)
         {
@@ -97,7 +99,6 @@ public class Gamemanager : MonoBehaviour
     {
         if (winner < players.Count)
         {
-            //players.FindInstanceID<GameObject>(gameObject);
             players[winner].GetComponent<PlayerScript>().wins++;
         }
 
@@ -106,16 +107,14 @@ public class Gamemanager : MonoBehaviour
         minigameIndex = 0;
         S_curMinigame = "ElgerScene";
         SceneManager.LoadScene("ElgerScene");
-        
-        if (minigames.Count > 1) 
+
+        if (minigames.Count > 1)
         {
-            StartCoroutine(Countdown(5));
+            StartCoroutine(Countdown(6));
         } else
         {
-            Txt_timerTxt.gameObject.SetActive(true);
-            Txt_timerTxt.text = "Winner";
+            Application.Quit();
         }
-        
     }
 
     public void Ready()
@@ -127,7 +126,7 @@ public class Gamemanager : MonoBehaviour
             Txt_timerTxt.gameObject.SetActive(true);
             StartCoroutine(Countdown(6));
         }
-            
+
         else
         {
             Txt_timerTxt.gameObject.SetActive(false);
@@ -139,15 +138,12 @@ public class Gamemanager : MonoBehaviour
     }
     IEnumerator Countdown(int time)
     {
-        Txt_timerTxt.gameObject.SetActive (true);
         B_countingDown = true;
         for (int i = 0; i < time; i++)
         {
-                Txt_timerTxt.text = i.ToString();
+            Txt_timerTxt.text = i.ToString();
             yield return new WaitForSeconds(time / time);
         }
         SceneManager.LoadScene(ChooseScene());
-        Txt_timerTxt.gameObject.SetActive(false);
-        B_countingDown = false;
     }
 }
