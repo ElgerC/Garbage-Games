@@ -32,6 +32,11 @@ public class Gamemanager : MonoBehaviour
     public List<GameObject> L_models = new List<GameObject>();
 
     [SerializeField] private List<PlayerApearanceScrptObj> L_apearances = new List<PlayerApearanceScrptObj>();
+    [SerializeField] private List<Vector3> V3_nameCardPositions = new List<Vector3>();
+    [SerializeField] private GameObject G_nameCardPrefab;
+
+    [SerializeField] private GameObject G_nameCardCanvas;
+    private RectTransform CanvasRect;
     private void Awake()
     {
         if (instance == null)
@@ -40,6 +45,8 @@ public class Gamemanager : MonoBehaviour
             Destroy(this);
 
         DontDestroyOnLoad(gameObject);
+
+        CanvasRect = G_nameCardCanvas.GetComponent<RectTransform>();
     }
     public void ChangeApearance(GameObject player)
     {
@@ -49,7 +56,29 @@ public class Gamemanager : MonoBehaviour
         PlayerScript PS_playerScript = player.GetComponent<PlayerScript>();
 
         PS_playerScript.C_playerColor = L_apearances[apearanceIndex].C_color;
-        PS_playerScript.G_namecard = L_apearances[apearanceIndex].G_namecard;
+        PS_playerScript.S_namecard = L_apearances[apearanceIndex].namecard;
+    }
+
+    ////inspiration/source: https://discussions.unity.com/t/how-to-convert-from-world-space-to-canvas-space/117981/3
+    //private Vector3 WorldToCanvas(Vector3 V3_worldPos,GameObject G_UIobject)
+    //{
+    //    Vector2 V2_ViewportPosition = Camera.main.WorldToViewportPoint(V3_worldPos);
+    //    Vector2 V2_WorldObject_ScreenPosition = new Vector2(
+    //    ((V2_ViewportPosition.x * CanvasRect.sizeDelta.x) - (CanvasRect.sizeDelta.x * 0.5f)),
+    //    ((V2_ViewportPosition.y * CanvasRect.sizeDelta.y) - (CanvasRect.sizeDelta.y * 0.5f)));
+
+
+    //    return V2_WorldObject_ScreenPosition;
+    //}
+    public GameObject CreateNamecard()
+    {
+
+
+        int apearanceIndex = UnityEngine.Random.Range(0, L_apearances.Count - 1);
+
+        GameObject go = Instantiate(G_nameCardPrefab,G_nameCardCanvas.transform);
+        go.GetComponent<RectTransform>().position = V3_nameCardPositions[players.Count - 1];
+        return go;
     }
     public void AddPlayers(GameObject newPlayer)
     {
@@ -57,14 +86,7 @@ public class Gamemanager : MonoBehaviour
 
         players.Add(newPlayer);
 
-
-
-
-
-
-        int modelIndex = UnityEngine.Random.Range(0, L_models.Count - 1);
-        Instantiate(L_models[modelIndex], new Vector3(0, -0.5f, 0), Quaternion.Euler(0, 90, 0), newPlayer.transform);
-        L_models.RemoveAt(modelIndex);
+        newPlayer.GetComponent<PlayerScript>().ChangeApearance(L_apearances[players.Count-1]);
 
         newPlayer.transform.position = gameManagerData.m_MinigamesData[minigameIndex].startPositions[players.Count - 1];
     }
@@ -78,7 +100,7 @@ public class Gamemanager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (S_curMinigame == "ElgerScene")
+        if (S_curMinigame == "StartScene")
         {
             Txt_timerTxt = GameObject.FindWithTag("Countdown").GetComponent<TMP_Text>();
         }

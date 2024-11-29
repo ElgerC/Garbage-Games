@@ -50,7 +50,7 @@ public class MinigolfManager : MonoBehaviour
     private void SpawnBall()
     {
         G_curBall = Instantiate(G_ballPrefab, V3_startPos, Quaternion.Euler(0, 180, 0));
-        G_curBall.GetComponent<MeshRenderer>().material.color = Gamemanager.instance.colorList[I_ballIndex];
+        G_curBall.GetComponent<MeshRenderer>().material.color = Gamemanager.instance.players[I_ballIndex].GetComponent<PlayerScript>().C_playerColor;
 
         BS_curBallScript = G_curBall.GetComponent<BallScript>();
         RB_curBallRb = G_curBall.GetComponent<Rigidbody>();

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04b0287a1d14d7e4393233b418381770, type: 3}
-  m_Name: PlayerApearance4
+  m_Name: CardboardBox
   m_EditorClassIdentifier: 
-  S_namecard: {fileID: 0}
-  C_color: {r: 0, g: 0, b: 0, a: 0}
-  G_model: {fileID: 0}
+  namecard: {fileID: 21300000, guid: 02e1c779b87c96145a40146682f8c18a, type: 3}
+  C_color: {r: 0.14901961, g: 0.8352942, b: 0.12941177, a: 0}
+  G_model: {fileID: 4637004519490044567, guid: d32e2be3f2b12294f9dc47c484521b2e, type: 3}
