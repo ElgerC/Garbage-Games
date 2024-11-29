@@ -9173,7 +9173,7 @@ MonoBehaviour:
   GO_Bombprefab: {fileID: 2046749846}
   I_RandomPlayer: 0
   I_PlayersLeft: 4
-  F_BombTimer: 99999
+  F_BombTimer: 20
   T_BombTimer: {fileID: 825397558}
 --- !u!4 &1088666563
 Transform:

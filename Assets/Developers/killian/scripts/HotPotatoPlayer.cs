@@ -50,7 +50,7 @@ public class HotPotatoPlayer : MonoBehaviour
 
     IEnumerator BombPassDown(GameObject target)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
         target.GetComponent<HotPotatoPlayer>().SetBomb();
         B_HasBomb = false;
         Debug.Log(HotPotato.I_RandomPlayer);
