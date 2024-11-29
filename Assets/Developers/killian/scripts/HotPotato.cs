@@ -71,7 +71,7 @@ public class HotPotato : MonoBehaviour
             }
             Debug.Log("timer expired");
             I_PlayersLeft--;
-            F_BombTimer = 10;
+            F_BombTimer = 15;
             I_RandomPlayer = Random.Range(0, GO_Players.Count);
             GO_Players[I_RandomPlayer].GetComponent<HotPotatoPlayer>().SetBomb();
             Debug.Log(I_RandomPlayer);
@@ -82,11 +82,10 @@ public class HotPotato : MonoBehaviour
             if (GO_Players[i].GetComponent<HotPotatoPlayer>().GetBomb())
             {
                 GO_Bombprefab.transform.position = GO_Players[i].transform.position + V3_Offset;
-                break;
             }
         }
 
-        if (I_PlayersLeft == 1)
+        if (GO_Players.Count == 1)
         {
             Gamemanager.instance.MinigameFinished(8);
 

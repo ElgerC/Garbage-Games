@@ -18,7 +18,7 @@ public class Gamemanager : MonoBehaviour
 
 
 
-    public string S_curMinigame = "ElgerScene";
+    public string S_curMinigame = "StartScene";
 
     [SerializeField] private TMP_Text Txt_timerTxt;
 
@@ -105,10 +105,10 @@ public class Gamemanager : MonoBehaviour
         minigames.Remove(SceneManager.GetActiveScene().name);
 
         minigameIndex = 0;
-        S_curMinigame = "ElgerScene";
-        SceneManager.LoadScene("ElgerScene");
-
-        if (minigames.Count > 1)
+        S_curMinigame = "StartScene";
+        SceneManager.LoadScene("StartScene");
+        
+        if (minigames.Count > 1) 
         {
             StartCoroutine(Countdown(6));
         } else

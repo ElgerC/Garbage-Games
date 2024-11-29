@@ -27,11 +27,11 @@ public class HotPotatoPlayer : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         TransferPotato(collision.gameObject);
-        Debug.Log("test");
+        Debug.Log(transform.tag);
     }
     public void TransferPotato(GameObject obj)
     {
-        if (B_HasBomb && obj.transform.tag == "player1" || obj.transform.tag == "player4" || obj.transform.tag == "player3" || obj.transform.tag == "player2")
+        if (B_HasBomb && obj.transform.tag == "player1" || B_HasBomb &&  obj.transform.tag == "player4" || B_HasBomb && obj.transform.tag == "player3" || B_HasBomb &&  obj.transform.tag == "player2")
         {
             StartCoroutine(BombPassDown(obj));
             Debug.Log("switched");
@@ -50,7 +50,7 @@ public class HotPotatoPlayer : MonoBehaviour
 
     IEnumerator BombPassDown(GameObject target)
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         target.GetComponent<HotPotatoPlayer>().SetBomb();
         B_HasBomb = false;
         Debug.Log(HotPotato.I_RandomPlayer);

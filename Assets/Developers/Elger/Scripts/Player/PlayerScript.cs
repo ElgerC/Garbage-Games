@@ -99,7 +99,7 @@ public class PlayerScript : MonoBehaviour
 
     public void OnReady(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && gamemanager.S_curMinigame == "ElgerScene")
+        if (ctx.performed && gamemanager.S_curMinigame == "StartScene")
         {
             gamemanager.Ready();
         }
@@ -118,7 +118,8 @@ public class PlayerScript : MonoBehaviour
 
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized * playerSpeed;
         rb.MovePosition(rb.position + move);
-        if(gamemanager.S_curMinigame == "ElgerScene")
+
+        if(gamemanager.S_curMinigame == "StartScene")
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
@@ -126,6 +127,7 @@ public class PlayerScript : MonoBehaviour
         if (move != Vector3.zero)
         {
             rb.velocity = move;
+            transform.forward = move;
         }
         if (gamemanager.S_curMinigame == "HotPotato")
             if (rb.velocity.magnitude < 4f && rb.velocity.magnitude > -1f)
