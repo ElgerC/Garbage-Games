@@ -18,7 +18,8 @@ public class BallScript : MonoBehaviour
     private GameObject G_Pivot;
 
     public bool B_landed = false;
-    public bool B_Lauched = false;  
+    public bool B_Lauched = false;
+
     private void Awake()
     {
         RB_rb = GetComponent<Rigidbody>();
@@ -37,8 +38,8 @@ public class BallScript : MonoBehaviour
         if (!B_Lauched)
         {
             Debug.Log("Launch");
-            V3_direction = -G_Pivot.transform.forward * F_speed * (G_Pivot.transform.GetChild(0).localScale.z*3);
-            
+            V3_direction = -G_Pivot.transform.forward * F_speed * (G_Pivot.transform.GetChild(0).localScale.z * 3);
+
 
             Anim_animator.enabled = false;
             G_Pivot.SetActive(false);
@@ -49,16 +50,16 @@ public class BallScript : MonoBehaviour
     }
     private void Update()
     {
-        if(RB_rb.velocity.magnitude < MinSpeed.magnitude && B_Lauched && RB_rb.velocity.magnitude > 0f)
+        if (RB_rb.velocity.magnitude < MinSpeed.magnitude && B_Lauched && RB_rb.velocity.magnitude > 0f)
         {
-            RB_rb.velocity = Vector3.zero;            
+            RB_rb.velocity = Vector3.zero;
         }
-        if(RB_rb.velocity == Vector3.zero && B_Lauched)
+        if (RB_rb.velocity == Vector3.zero && B_Lauched)
         {
             StartCoroutine(minTime());
         }
 
-        if(B_SavedRot)
+        if (B_SavedRot)
         {
             transform.rotation = Q_SavedRotation;
         }
@@ -70,7 +71,7 @@ public class BallScript : MonoBehaviour
             float zRot = transform.rotation.z + RB_rb.velocity.z * 60;
 
             transform.rotation = Quaternion.Euler(xRot, yRot, zRot);
-        }      
+        }
     }
     private IEnumerator minTime()
     {

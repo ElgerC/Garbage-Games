@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Mathematics;
 
 enum golfStates
 {
+    Starting,
     Waiting,
     Busy,
     Checking,
@@ -20,7 +22,7 @@ public class MinigolfManager : MonoBehaviour
     private Rigidbody RB_curBallRb;
     private int I_ballIndex = 0;
 
-    [SerializeField] private golfStates state = golfStates.Waiting;
+    [SerializeField] private golfStates state = golfStates.Starting;
 
     [SerializeField] private Vector3 V3_offSet;
 
@@ -29,6 +31,12 @@ public class MinigolfManager : MonoBehaviour
     public static MinigolfManager instance;
 
     [SerializeField] private GameObject temp;
+
+    [SerializeField] private GameObject G_line;
+
+    //Camera variables
+    [SerializeField] private Animator ANIM_CamAnim;
+    [SerializeField] private GameObject G_Cam;
 
     private void Awake()
     {
@@ -53,27 +61,12 @@ public class MinigolfManager : MonoBehaviour
 
         state = golfStates.Busy;
     }
-    private void CheckWinner()
+    public void FinishedStartAnim()
     {
-        float dist = 0;
-        int winner = 8;
-        for (int i = 0; i < L_balls.Count; i++)
-        {
-            if (Vector3.Distance(L_balls[i].transform.position, G_goal.transform.position) > dist)
-            {
-                dist = Vector3.Distance(L_balls[i].transform.position, G_goal.transform.position);
-                winner = i;
-            }
-        }
-
-        Camera.main.transform.position = Gamemanager.instance.players[winner].GetComponent<PlayerScript>().G_golfBall.transform.position + V3_offSet;
-        Camera.main.transform.rotation = Quaternion.Euler(14.5f, 0, 0);
-
-        temp.SetActive(true);
-        StartCoroutine(wait(winner));
-
-        state = golfStates.Done;
+        ANIM_CamAnim.enabled = false;
+        state = golfStates.Waiting;
     }
+
     private void Update()
     {
         switch (state)
@@ -105,17 +98,61 @@ public class MinigolfManager : MonoBehaviour
                         state = golfStates.Waiting;
                     }
                 }
-
                 break;
             case golfStates.Checking:
-                CheckWinner();
+                ANIM_CamAnim.enabled = true;
+                ANIM_CamAnim.SetTrigger("End");
+                MakeLine();
                 break;
         }
     }
+    public void CheckWinner()
+    {
+        ANIM_CamAnim.enabled = false;
 
+        float dist = 0;
+        int winner = 8;
+        for (int i = 0; i < L_balls.Count; i++)
+        {
+            if (Vector3.Distance(L_balls[i].transform.position, G_goal.transform.position) > dist)
+            {
+                dist = Vector3.Distance(L_balls[i].transform.position, G_goal.transform.position);
+                winner = i;
+            }
+        }
+
+        Camera.main.transform.position = Gamemanager.instance.players[winner].GetComponent<PlayerScript>().G_golfBall.transform.position + V3_offSet;
+        Camera.main.transform.rotation = Quaternion.Euler(14.5f, 0, 0);
+
+        temp.SetActive(true);
+        StartCoroutine(wait(winner));
+
+        state = golfStates.Done;
+    }
     IEnumerator wait(int winner)
     {
         yield return new WaitForSeconds(4);
         Gamemanager.instance.MinigameFinished(winner);
+    }
+    private void MakeLine()
+    {
+        GameObject G_end = G_goal;
+        for (int j = 0; j < L_balls.Count; j++)
+        {
+            GameObject G_start = L_balls[j];
+            Material M_lineMat = L_balls[j].GetComponent<MeshRenderer>().material;
+
+            float dist = Vector3.Distance(G_start.transform.position, G_end.transform.position);
+            float step = 1 / math.round(dist) * 2;
+
+            for (int i = 1; i < math.round(dist) / 2; i++)
+            {
+                Vector3 loc = Vector3.Lerp(G_start.transform.position, G_end.transform.position, step * (i));
+                GameObject obj = Instantiate(G_line, loc, Quaternion.identity, transform);
+                obj.transform.LookAt(G_end.transform.position);
+                obj.GetComponent<MeshRenderer>().material.color = M_lineMat.color;
+            }
+        }
+        
     }
 }

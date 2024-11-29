@@ -2382,7 +2382,6 @@ MonoBehaviour:
   players: []
   minigames:
   - StartScene
-  - HotPotato
   - MiniGolf
   L_models:
   - {fileID: 4637004519490044567, guid: d32e2be3f2b12294f9dc47c484521b2e, type: 3}

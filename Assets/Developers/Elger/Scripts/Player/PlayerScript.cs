@@ -35,6 +35,9 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject G_golfBall;
 
+    public Color C_playerColor;
+    public GameObject G_namecard;
+
     public int wins = 0;
 
     private void Awake()
@@ -115,10 +118,14 @@ public class PlayerScript : MonoBehaviour
 
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized * playerSpeed;
         rb.MovePosition(rb.position + move);
+        if(gamemanager.S_curMinigame == "ElgerScene")
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
 
         if (move != Vector3.zero)
         {
-            gameObject.transform.forward = move;
+            rb.velocity = move;
         }
         if (gamemanager.S_curMinigame == "HotPotato")
             if (rb.velocity.magnitude < 4f && rb.velocity.magnitude > -1f)
@@ -169,5 +176,10 @@ public class PlayerScript : MonoBehaviour
                 rb.position += new Vector3(0f, F_stepSmooth, 0f);
             }
         }
+    }
+
+    public void ChangeApearance(GameObject G_newModel,GameObject G_)
+    {
+
     }
 }
