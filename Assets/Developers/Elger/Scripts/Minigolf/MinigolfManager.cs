@@ -110,11 +110,11 @@ public class MinigolfManager : MonoBehaviour
     {
         ANIM_CamAnim.enabled = false;
 
-        float dist = 0;
+        float dist = 100;
         int winner = 8;
         for (int i = 0; i < L_balls.Count; i++)
         {
-            if (Vector3.Distance(L_balls[i].transform.position, G_goal.transform.position) > dist)
+            if (Vector3.Distance(L_balls[i].transform.position, G_goal.transform.position) < dist)
             {
                 dist = Vector3.Distance(L_balls[i].transform.position, G_goal.transform.position);
                 winner = i;

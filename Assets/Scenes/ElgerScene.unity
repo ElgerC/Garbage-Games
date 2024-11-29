@@ -2350,69 +2350,6 @@ PrefabInstance:
       addedObject: {fileID: 1662803448}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2abc876427c83dc4eaac30ec4a820cc6, type: 3}
---- !u!1 &476745095
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 476745098}
-  - component: {fileID: 476745096}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &476745096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 476745095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa8c8a32d38552c4da381ff77c6078bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players: []
-  minigames:
-  - StartScene
-  - HotPotato
-  - MiniGolf
-  S_curMinigame: ElgerScene
-  Txt_timerTxt: {fileID: 1875684538}
-  gameManagerData: {fileID: 11400000, guid: 0ba54ca8baf543540973a90d842fcc68, type: 2}
-  colorList:
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 0, g: 1, b: 0, a: 0}
-  - {r: 0, g: 0, b: 1, a: 0}
-  - {r: 1, g: 0.97797257, b: 0, a: 0}
-  L_models:
-  - {fileID: 4637004519490044567, guid: d32e2be3f2b12294f9dc47c484521b2e, type: 3}
-  - {fileID: 7180532072365841061, guid: 538756fb62ede9f4096ad319c9842988, type: 3}
-  - {fileID: 4412337229237324772, guid: 253120c4bed0df34b84b1d51d4f95b03, type: 3}
-  - {fileID: 3496753224793924631, guid: fbbf0082df42ef54782ff07c75824e39, type: 3}
-  L_apearances: []
---- !u!4 &476745098
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 476745095}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &517812521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8662,7 +8599,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 476745098}
   - {fileID: 337337351}
   - {fileID: 1581765126}
   - {fileID: 1666763691}

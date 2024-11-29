@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd7c1db9bcd0114a9fb505ceb45f42e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 0.05
+  playerSpeed: 0.1
   state: 0
   canAct: 1
   dashSpeed: 20
@@ -229,6 +229,8 @@ MonoBehaviour:
   G_stepUpper: {fileID: 5075721045153182201}
   F_stepSmooth: 0.1
   G_golfBall: {fileID: 0}
+  C_playerColor: {r: 0, g: 0, b: 0, a: 0}
+  G_namecard: {fileID: 0}
   wins: 0
 --- !u!114 &6502186858853229178
 MonoBehaviour:
