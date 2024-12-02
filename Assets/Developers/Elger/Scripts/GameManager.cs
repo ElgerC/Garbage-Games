@@ -36,7 +36,6 @@ public class Gamemanager : MonoBehaviour
     [SerializeField] private GameObject G_nameCardPrefab;
 
     [SerializeField] private GameObject G_nameCardCanvas;
-    private RectTransform CanvasRect;
     private void Awake()
     {
         if (instance == null)
@@ -44,13 +43,9 @@ public class Gamemanager : MonoBehaviour
         else
             Destroy(this);
 
-        DontDestroyOnLoad(gameObject);
-
-        CanvasRect = G_nameCardCanvas.GetComponent<RectTransform>();
-    }
+        DontDestroyOnLoad(gameObject);    }
     public GameObject CreateNamecard()
     {
-        int apearanceIndex = UnityEngine.Random.Range(0, L_apearances.Count - 1);
 
         GameObject go = Instantiate(G_nameCardPrefab,G_nameCardCanvas.transform);
         go.GetComponent<RectTransform>().anchoredPosition = V3_nameCardPositions[players.Count - 1];
