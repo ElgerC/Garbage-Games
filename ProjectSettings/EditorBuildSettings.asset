@@ -6,20 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/Developers/Elger/Test/testScene 1.unity
-    guid: ea4b700ff8d842542bace23962f4537a
-  - enabled: 1
-    path: Assets/Developers/Elger/Test/testScene 2.unity
-    guid: b360376018584b04496e331bc6351da9
+    path: Assets/Scenes/ElgerScene.unity
+    guid: 355e9c9cc73b8f8438b3116cb270b0ca
   - enabled: 1
     path: Assets/Scenes/Minigames/HotPotato.unity
     guid: 659ff7dffb5f9b44ab89f383ec0ca305
   - enabled: 1
     path: Assets/Scenes/Minigames/MiniGolf.unity
     guid: 9375788058b1eb24e8da31e4ac705999
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 0
+    path: Assets/Developers/Elger/Test/testScene 1.unity
+    guid: ea4b700ff8d842542bace23962f4537a
+  - enabled: 0
+    path: Assets/Developers/Elger/Test/testScene 2.unity
+    guid: b360376018584b04496e331bc6351da9
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1a0121071079a7343aad0edfdce80743,
       type: 2}
