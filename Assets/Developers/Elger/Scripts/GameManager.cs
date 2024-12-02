@@ -48,36 +48,12 @@ public class Gamemanager : MonoBehaviour
 
         CanvasRect = G_nameCardCanvas.GetComponent<RectTransform>();
     }
-    public void ChangeApearance(GameObject player)
-    {
-        int apearanceIndex = UnityEngine.Random.Range(0, L_apearances.Count - 1);
-        Instantiate(L_apearances[apearanceIndex].G_model, new Vector3(0, -0.5f, 0), Quaternion.Euler(0, 90, 0), player.transform);
-
-        PlayerScript PS_playerScript = player.GetComponent<PlayerScript>();
-
-        PS_playerScript.C_playerColor = L_apearances[apearanceIndex].C_color;
-        PS_playerScript.S_namecard = L_apearances[apearanceIndex].namecard;
-    }
-
-    ////inspiration/source: https://discussions.unity.com/t/how-to-convert-from-world-space-to-canvas-space/117981/3
-    //private Vector3 WorldToCanvas(Vector3 V3_worldPos,GameObject G_UIobject)
-    //{
-    //    Vector2 V2_ViewportPosition = Camera.main.WorldToViewportPoint(V3_worldPos);
-    //    Vector2 V2_WorldObject_ScreenPosition = new Vector2(
-    //    ((V2_ViewportPosition.x * CanvasRect.sizeDelta.x) - (CanvasRect.sizeDelta.x * 0.5f)),
-    //    ((V2_ViewportPosition.y * CanvasRect.sizeDelta.y) - (CanvasRect.sizeDelta.y * 0.5f)));
-
-
-    //    return V2_WorldObject_ScreenPosition;
-    //}
     public GameObject CreateNamecard()
     {
-
-
         int apearanceIndex = UnityEngine.Random.Range(0, L_apearances.Count - 1);
 
         GameObject go = Instantiate(G_nameCardPrefab,G_nameCardCanvas.transform);
-        go.GetComponent<RectTransform>().position = V3_nameCardPositions[players.Count - 1];
+        go.GetComponent<RectTransform>().anchoredPosition = V3_nameCardPositions[players.Count - 1];
         return go;
     }
     public void AddPlayers(GameObject newPlayer)

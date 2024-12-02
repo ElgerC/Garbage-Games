@@ -7942,7 +7942,11 @@ MonoBehaviour:
   - {fileID: 7180532072365841061, guid: 538756fb62ede9f4096ad319c9842988, type: 3}
   - {fileID: 4412337229237324772, guid: 253120c4bed0df34b84b1d51d4f95b03, type: 3}
   - {fileID: 3496753224793924631, guid: fbbf0082df42ef54782ff07c75824e39, type: 3}
-  L_apearances: []
+  L_apearances:
+  - {fileID: 11400000, guid: 35d2f474e0294dd4fa4a02903e835739, type: 2}
+  - {fileID: 11400000, guid: e0d6a37449cd27748923800815e74d93, type: 2}
+  - {fileID: 11400000, guid: 9e18be40306f9264eb49a46346fa030f, type: 2}
+  - {fileID: 11400000, guid: c63c7282e3ee2694090debfd257ee58f, type: 2}
   V3_nameCardPositions:
   - {x: -782, y: 435, z: 0}
   - {x: 393, y: 435, z: 0}
