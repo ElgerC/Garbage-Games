@@ -62,11 +62,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3383665f98210104a8c968de5f0e5d17, type: 2}
+      objectReference: {fileID: 2100000, guid: 7d229b07e7c923b4f8d219e651526482, type: 2}
     - target: {fileID: 919132149155446097, guid: 31eced5f24ee74c40b92b88d1760188a,
         type: 3}
       propertyPath: m_Name
-      value: M_Curb_drain (2)
+      value: P_Curb_drain
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
