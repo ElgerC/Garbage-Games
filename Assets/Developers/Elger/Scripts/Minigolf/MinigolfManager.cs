@@ -38,6 +38,10 @@ public class MinigolfManager : MonoBehaviour
     [SerializeField] private Animator ANIM_CamAnim;
     [SerializeField] private GameObject G_Cam;
 
+    //Club
+    public GameObject G_club;
+    public Animator Anim_clubAnim;
+
     private void Awake()
     {
         if (instance == null)
@@ -46,6 +50,9 @@ public class MinigolfManager : MonoBehaviour
         }
         else
             Destroy(this);
+
+        Anim_clubAnim = G_club.GetComponentInChildren<Animator>();
+        G_club.SetActive(false);
     }
     private void SpawnBall()
     {
