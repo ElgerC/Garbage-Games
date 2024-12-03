@@ -418,9 +418,10 @@ GameObject:
   - component: {fileID: 6889323713543390829}
   - component: {fileID: 6064606681002210512}
   - component: {fileID: 9154589752499870975}
+  - component: {fileID: 4051479053326296234}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: DoorMinigame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -512,6 +513,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.48487803, y: 1.9909251, z: 1.9999998}
   m_Center: {x: -0.14499277, y: 0.029012293, z: -0.9999999}
+--- !u!114 &4051479053326296234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4604269748883793121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb85af465b662542a45fb71d95345c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CorrectDoor: 0
 --- !u!1 &8314043053443820708
 GameObject:
   m_ObjectHideFlags: 0

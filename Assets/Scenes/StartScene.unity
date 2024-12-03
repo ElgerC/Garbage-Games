@@ -6993,7 +6993,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: ff46968f1f6eead4b8037609d1e2d10b, type: 3}
 --- !u!4 &1496615900 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6041611697741263581, guid: ff46968f1f6eead4b8037609d1e2d10b,
+  m_CorrespondingSourceObject: {fileID: 3433894292882277373, guid: ff46968f1f6eead4b8037609d1e2d10b,
     type: 3}
   m_PrefabInstance: {fileID: 1496615899}
   m_PrefabAsset: {fileID: 0}
@@ -8030,6 +8030,7 @@ MonoBehaviour:
   - StartScene
   - HotPotato
   - MiniGolf
+  - RandomDoor
   S_curMinigame: StartScene
   Txt_timerTxt: {fileID: 2101459464}
   gameManagerData: {fileID: 11400000, guid: 0ba54ca8baf543540973a90d842fcc68, type: 2}
@@ -8270,7 +8271,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: ff46968f1f6eead4b8037609d1e2d10b, type: 3}
 --- !u!4 &1921276553 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6041611697741263581, guid: ff46968f1f6eead4b8037609d1e2d10b,
+  m_CorrespondingSourceObject: {fileID: 26260522994079220, guid: ff46968f1f6eead4b8037609d1e2d10b,
     type: 3}
   m_PrefabInstance: {fileID: 1921276552}
   m_PrefabAsset: {fileID: 0}
