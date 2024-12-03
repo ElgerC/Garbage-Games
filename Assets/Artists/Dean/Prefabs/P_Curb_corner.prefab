@@ -62,11 +62,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 02efd984f421731489ac5d66756da5f9, type: 2}
+      objectReference: {fileID: 2100000, guid: 48db2d77d7ff8da4c9174e107b80c3af, type: 2}
     - target: {fileID: 919132149155446097, guid: 93e5bc653d5e9244597e07b5b4da6453,
         type: 3}
       propertyPath: m_Name
-      value: Curb_corner
+      value: P_Curb_corner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

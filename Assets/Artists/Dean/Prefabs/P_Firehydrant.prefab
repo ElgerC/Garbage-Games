@@ -82,11 +82,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 068c844a184f3344b9474265459b6b02, type: 2}
+      objectReference: {fileID: 2100000, guid: f271ae60743489e42a2dad90b6895df5, type: 2}
     - target: {fileID: 919132149155446097, guid: dc111c9507c2d7d41acee42b7d00acd0,
         type: 3}
       propertyPath: m_Name
-      value: M_Firehydrant
+      value: P_Firehydrant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
