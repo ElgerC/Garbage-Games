@@ -32,8 +32,11 @@ public class BallScript : MonoBehaviour
         B_SavedRot = true;
 
         Anim_animator.SetTrigger("LockRotate");
-        MinigolfManager.instance.G_club.SetActive(true);
-        MinigolfManager.instance.Anim_clubAnim.SetTrigger("");
+
+        //MinigolfManager.instance.G_club.SetActive(true);
+        //MinigolfManager.instance.Anim_clubAnim.SetTrigger("StartSwing");
+
+        //MinigolfManager.instance.G_club.transform.rotation = Q_SavedRotation;
     }
     public void Launch()
     {

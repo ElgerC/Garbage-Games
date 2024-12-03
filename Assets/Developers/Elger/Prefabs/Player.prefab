@@ -230,8 +230,13 @@ MonoBehaviour:
   F_stepSmooth: 0.1
   G_golfBall: {fileID: 0}
   C_playerColor: {r: 0, g: 0, b: 0, a: 0}
-  G_namecard: {fileID: 0}
+  S_namecard: {fileID: 0}
   wins: 0
+  F_Presses: 0
+  V3_mashPos: {x: 0, y: 0, z: 0}
+  G_mashNumber: {fileID: 6232581913529004753, guid: e01917e1145708e4ea04bb175cc0eb01,
+    type: 3}
+  G_Canvas: {fileID: 0}
 --- !u!114 &6502186858853229178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +307,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 56ea138c-fe8c-44dc-9da4-fe58db1fd071
     m_ActionName: Player/Jump[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3149988764774393292}
+        m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
+        m_MethodName: mash1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 06c3abae-3206-4995-bf02-8da15521068c
+    m_ActionName: Player/Mash1[/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3149988764774393292}
+        m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
+        m_MethodName: mash2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9ea4c130-1af7-4bc4-a08f-00186dc792bc
+    m_ActionName: Player/Mash2[/Keyboard/a]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard(WASD)
   m_DefaultActionMap: Player
