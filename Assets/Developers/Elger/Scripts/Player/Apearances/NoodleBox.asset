@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04b0287a1d14d7e4393233b418381770, type: 3}
-  m_Name: PlayerApearance2
+  m_Name: NoodleBox
   m_EditorClassIdentifier: 
-  S_namecard: {fileID: 0}
-  C_color: {r: 0, g: 0, b: 0, a: 0}
-  G_model: {fileID: 0}
+  namecard: {fileID: 21300000, guid: 013cffe00230cd64e9af769e3d7ceb2c, type: 3}
+  C_color: {r: 0.8313726, g: 0.76470596, b: 0.11764707, a: 0}
+  G_model: {fileID: 7180532072365841061, guid: 538756fb62ede9f4096ad319c9842988, type: 3}

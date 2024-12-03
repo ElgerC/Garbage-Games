@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04b0287a1d14d7e4393233b418381770, type: 3}
-  m_Name: PlayerApearance1
+  m_Name: SoupCan
   m_EditorClassIdentifier: 
-  S_namecard: {fileID: 0}
-  C_color: {r: 0, g: 0, b: 0, a: 0}
-  G_model: {fileID: 0}
+  namecard: {fileID: 21300000, guid: a67da0a43f7c62a4ead6d5627437c759, type: 3}
+  C_color: {r: 0.8117648, g: 0.050980397, b: 0.04705883, a: 0}
+  G_model: {fileID: 4412337229237324772, guid: 253120c4bed0df34b84b1d51d4f95b03, type: 3}

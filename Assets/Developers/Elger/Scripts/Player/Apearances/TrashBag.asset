@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04b0287a1d14d7e4393233b418381770, type: 3}
-  m_Name: PlayerApearance3
+  m_Name: TrashBag
   m_EditorClassIdentifier: 
-  S_namecard: {fileID: 0}
-  C_color: {r: 0, g: 0, b: 0, a: 0}
-  G_model: {fileID: 0}
+  namecard: {fileID: 21300000, guid: 6ec34741c877dea4e8ca2c5e2674cd1f, type: 3}
+  C_color: {r: 0.039215688, g: 0.098039225, b: 0.8117648, a: 1}
+  G_model: {fileID: 3496753224793924631, guid: fbbf0082df42ef54782ff07c75824e39, type: 3}
