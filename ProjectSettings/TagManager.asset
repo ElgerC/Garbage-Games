@@ -11,6 +11,7 @@ TagManager:
   - player3
   - player4
   - Countdown
+  - DoorMinigame
   layers:
   - Default
   - TransparentFX

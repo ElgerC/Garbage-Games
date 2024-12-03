@@ -9,7 +9,14 @@ public class DoorPlayer : MonoBehaviour
     public DoorMinigame DoorMinigame;
 
     [SerializeField]
-    public int CurrentFloor = 5;
+    public int CurrentFloor = 4;
+
+    Gamemanager gamemanager;
+
+    private void Awake()
+    {
+        gamemanager = Gamemanager.instance;
+    }
     // Start is called before the first frame update
     public void Start()
     {
@@ -19,7 +26,11 @@ public class DoorPlayer : MonoBehaviour
     // actual collision check
     public void OnCollisionEnter(Collision collision)
     {
-        FloorTeleport(collision.gameObject);
+        if(collision.transform.CompareTag("DoorMinigame"))
+        {
+            FloorTeleport(collision.gameObject);
+        }
+
     }
 
     //not sure if needed, but scared to remove incase it breaks everything
@@ -37,25 +48,32 @@ public class DoorPlayer : MonoBehaviour
         {
             switch (CurrentFloor)
             {
-                case 5:
-                    transform.position = DoorMinigame.GO_FloorsTeleports[0].transform.position;
-                    CurrentFloor--;
-                    break;
                 case 4:
-                    transform.position = DoorMinigame.GO_FloorsTeleports[1].transform.position;
+                    transform.position = DoorMinigame.GO_FloorsTeleports[0].transform.position;
+
                     CurrentFloor--;
+
                     break;
                 case 3:
-                    transform.position = DoorMinigame.GO_FloorsTeleports[2].transform.position;
+                    transform.position = DoorMinigame.GO_FloorsTeleports[1].transform.position;
+
                     CurrentFloor--;
+
                     break;
                 case 2:
-                    transform.position = DoorMinigame.GO_FloorsTeleports[3].transform.position;
+                    transform.position = DoorMinigame.GO_FloorsTeleports[2].transform.position;
+
                     CurrentFloor--;
+
                     break;
                 case 1:
-                    transform.position = DoorMinigame.GO_FloorsTeleports[4].transform.position;
+                    transform.position = DoorMinigame.GO_FloorsTeleports[3].transform.position;
+
                     CurrentFloor--;
+
+                    Gamemanager.instance.MinigameFinished(9);
+
+                    this.GetComponent<PlayerScript>().wins++;
                     break;
             }
         }

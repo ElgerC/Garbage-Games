@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 291423935}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: DoorMinigame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -615,7 +615,7 @@ Transform:
   m_GameObject: {fileID: 291423930}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.916108, y: -6.007187, z: -10.662201}
+  m_LocalPosition: {x: 9.916108, y: -6.007187, z: -10.412201}
   m_LocalScale: {x: 1, y: 2.3758, z: 3.79}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -703,7 +703,7 @@ GameObject:
   - component: {fileID: 341764291}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: DoorMinigame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -788,7 +788,7 @@ Transform:
   m_GameObject: {fileID: 341764286}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.916108, y: -6.007187, z: -5.662201}
+  m_LocalPosition: {x: 9.916108, y: -6.007187, z: -5.412201}
   m_LocalScale: {x: 1, y: 2.3758, z: 3.79}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -927,7 +927,7 @@ GameObject:
   - component: {fileID: 394852689}
   m_Layer: 0
   m_Name: Cube (5)
-  m_TagString: Untagged
+  m_TagString: DoorMinigame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1736,6 +1736,8 @@ MonoBehaviour:
   G_stepUpper: {fileID: 0}
   F_stepSmooth: 8
   G_golfBall: {fileID: 0}
+  C_playerColor: {r: 0, g: 0, b: 0, a: 0}
+  G_namecard: {fileID: 0}
   wins: 0
 --- !u!1 &668353048
 GameObject:
@@ -2339,6 +2341,8 @@ MonoBehaviour:
   G_stepUpper: {fileID: 0}
   F_stepSmooth: 8
   G_golfBall: {fileID: 0}
+  C_playerColor: {r: 0, g: 0, b: 0, a: 0}
+  G_namecard: {fileID: 0}
   wins: 0
 --- !u!1 &787274542
 GameObject:
@@ -2630,7 +2634,7 @@ GameObject:
   - component: {fileID: 1095507785}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: DoorMinigame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2715,7 +2719,7 @@ Transform:
   m_GameObject: {fileID: 1095507780}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.916108, y: -6.007187, z: -15.662201}
+  m_LocalPosition: {x: 9.916108, y: -6.007187, z: -15.412201}
   m_LocalScale: {x: 1, y: 2.3758, z: 3.79}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3076,6 +3080,8 @@ MonoBehaviour:
   G_stepUpper: {fileID: 0}
   F_stepSmooth: 8
   G_golfBall: {fileID: 0}
+  C_playerColor: {r: 0, g: 0, b: 0, a: 0}
+  G_namecard: {fileID: 0}
   wins: 0
 --- !u!1 &1213947564
 GameObject:
@@ -3472,12 +3478,6 @@ MonoBehaviour:
   - {fileID: 1455189734}
   - {fileID: 1388350067}
   - {fileID: 875485861}
-  GO_DoorsF5:
-  - {fileID: 590915101}
-  - {fileID: 135604345}
-  - {fileID: 1862636199}
-  - {fileID: 714865546}
-  - {fileID: 1150148991}
   GO_FloorsTeleports:
   - {fileID: 422143677}
   - {fileID: 683850826}
@@ -3488,7 +3488,6 @@ MonoBehaviour:
   I_CorrectDoorF2: 0
   I_CorrectDoorF3: 0
   I_CorrectDoorF4: 0
-  I_CorrectDoorF5: 0
 --- !u!4 &1312559890
 Transform:
   m_ObjectHideFlags: 0
@@ -3498,11 +3497,11 @@ Transform:
   m_GameObject: {fileID: 1312559888}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -623.11237, y: -380.23846, z: 65.59045}
+  m_LocalPosition: {x: 5.6919556, y: 9.309998, z: 49.463417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1498264118}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1388350067
 GameObject:
@@ -4081,7 +4080,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1498264118
 Transform:
   m_ObjectHideFlags: 0
@@ -4100,7 +4099,6 @@ Transform:
   - {fileID: 481533714}
   - {fileID: 1443515996}
   - {fileID: 1856335834}
-  - {fileID: 1312559890}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1502160745
@@ -4357,7 +4355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1563193414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4372,10 +4370,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players: []
   minigames: []
-  L_models: []
   S_curMinigame: ElgerScene
   Txt_timerTxt: {fileID: 0}
   gameManagerData: {fileID: 0}
+  colorList: []
+  L_models: []
+  L_apearances: []
 --- !u!4 &1563193415
 Transform:
   m_ObjectHideFlags: 0
@@ -4630,7 +4630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1676732842
 Transform:
   m_ObjectHideFlags: 0
@@ -5194,7 +5194,7 @@ GameObject:
   - component: {fileID: 2023440553}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: DoorMinigame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5453,6 +5453,8 @@ MonoBehaviour:
   G_stepUpper: {fileID: 0}
   F_stepSmooth: 8
   G_golfBall: {fileID: 0}
+  C_playerColor: {r: 0, g: 0, b: 0, a: 0}
+  G_namecard: {fileID: 0}
   wins: 0
 --- !u!1 &2141090511
 GameObject:
@@ -5601,4 +5603,5 @@ SceneRoots:
   - {fileID: 1399451287}
   - {fileID: 1195597975}
   - {fileID: 1498264118}
+  - {fileID: 1312559890}
   - {fileID: 1563193415}

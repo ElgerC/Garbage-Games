@@ -22,9 +22,6 @@ public class DoorMinigame : MonoBehaviour
     public GameObject[] GO_DoorsF4;
 
     [SerializeField]
-    public GameObject[] GO_DoorsF5;
-
-    [SerializeField]
     public GameObject[] GO_FloorsTeleports;
 
     [SerializeField]
@@ -38,9 +35,6 @@ public class DoorMinigame : MonoBehaviour
 
     [SerializeField]
     public int I_CorrectDoorF4;
-
-    [SerializeField]
-    public int I_CorrectDoorF5;
 
     // Start is called before the first frame update
     public void Start()
@@ -69,8 +63,6 @@ public class DoorMinigame : MonoBehaviour
 
         I_CorrectDoorF4 = Random.Range(0, GO_DoorsF4.Length);
 
-        I_CorrectDoorF5 = Random.Range(0, GO_DoorsF5.Length);
-
         for (int i = 0; i < 5; i++)
         {
             if (i == I_CorrectDoorF1)
@@ -91,11 +83,6 @@ public class DoorMinigame : MonoBehaviour
             if (i == I_CorrectDoorF4)
             {
                 GO_DoorsF4[i].GetComponent<DoorMinigameDoors>().CorrectDoor = true;
-            }
-
-            if(i == I_CorrectDoorF5)
-            {
-                GO_DoorsF5[i].GetComponent<DoorMinigameDoors>().CorrectDoor = true;
             }
         }
     }
