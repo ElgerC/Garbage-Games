@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
 public enum states
 {
     minigame1,
@@ -36,7 +38,9 @@ public class PlayerScript : MonoBehaviour
     public GameObject G_golfBall;
 
     public Color C_playerColor;
-    public GameObject G_namecard;
+    public Sprite S_namecard;
+
+    private GameObject G_namecard;
 
     public int wins = 0;
 
@@ -180,8 +184,16 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void ChangeApearance(GameObject G_newModel,GameObject G_)
+    public void ChangeApearance(PlayerApearanceScrptObj apearance)
     {
+        Instantiate(apearance.G_model, new Vector3(0, -0.5f, 0), Quaternion.Euler(0, 90, 0), transform);
+        C_playerColor = apearance.C_color;
+
+        if (!G_namecard)
+        {
+            G_namecard = gamemanager.CreateNamecard();
+        }
+        G_namecard.GetComponent<Image>().sprite = apearance.namecard;
 
     }
 }
