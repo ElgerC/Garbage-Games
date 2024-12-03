@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Garbage truck
-  m_Shader: {fileID: -6465566751694194690, guid: b0eb9a3f883d0c2429d483c5b4056325,
+  m_Shader: {fileID: -6465566751694194690, guid: 4f0b243123182794c878b13793374252,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -76,9 +76,9 @@ Material:
     - Vector1_9605CCA4: 10
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _max: 1
-    - _min: 0.5
-    - _shades: 0.325
+    - _max: 1.21
+    - _min: 0.6
+    - _shades: 0.35
     m_Colors:
     - Color_6A162E48: {r: 1, g: 1, b: 1, a: 0}
     - Color_6C9C775A: {r: 1, g: 1, b: 1, a: 0}
@@ -90,7 +90,7 @@ Material:
     - _L2_color: {r: 1, g: 1, b: 1, a: 0}
     - _L2_dir: {r: 0, g: 0, b: 0, a: 0}
     - _L3_color: {r: 1, g: 1, b: 1, a: 0}
-    - _L3_dir: {r: 0.7, g: 0.55, b: -0.21, a: 0}
+    - _L3_dir: {r: 1.56, g: -0.23, b: -0.21, a: 0}
     - _L4_color: {r: 1, g: 1, b: 1, a: 0}
     - _L4_dir: {r: 0.17, g: 0, b: 0, a: 0}
     - _L5_color: {r: 1, g: 1, b: 1, a: 0}
