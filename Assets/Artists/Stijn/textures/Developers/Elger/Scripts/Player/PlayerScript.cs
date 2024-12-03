@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -49,6 +51,7 @@ public class PlayerScript : MonoBehaviour
     public Vector3 V3_mashPos;
     [SerializeField] private GameObject G_mashNumber;
     public GameObject G_Canvas;
+    [SerializeField] private GameObject G_throw;
 
     private void Awake()
     {
@@ -113,7 +116,6 @@ public class PlayerScript : MonoBehaviour
         {
             gamemanager.Ready();
         }
-
     }
     public void mash1(InputAction.CallbackContext ctx)
     {
