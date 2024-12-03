@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_garbagetruck
-  m_Shader: {fileID: -6465566751694194690, guid: f7dd3eb7c43b5c6419a9481782235d62,
+  m_Shader: {fileID: -6465566751694194690, guid: 4804840f9e0ec3f46b12fe6a756bad0e,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -44,6 +44,9 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 2
+    - _max: 1.21
+    - _min: 0.6
+    - _shades: 0.35
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
