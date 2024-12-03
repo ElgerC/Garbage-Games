@@ -43,7 +43,9 @@ public class Gamemanager : MonoBehaviour
         else
             Destroy(this);
 
-        DontDestroyOnLoad(gameObject);    }
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(G_nameCardCanvas);
+    }
     public GameObject CreateNamecard()
     {
 

@@ -44,6 +44,12 @@ public class PlayerScript : MonoBehaviour
 
     public int wins = 0;
 
+    private bool B_mashSpam = false;
+    public float F_Presses = 0;
+    public Vector3 V3_mashPos;
+    [SerializeField] private GameObject G_mashNumber;
+    public GameObject G_Canvas;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -108,6 +114,30 @@ public class PlayerScript : MonoBehaviour
             gamemanager.Ready();
         }
 
+    }
+    public void mash1(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed && gamemanager.S_curMinigame == "ButtonMash" && B_mashSpam)
+        {
+            B_mashSpam = (!B_mashSpam);
+            F_Presses++;
+
+            GameObject go = Instantiate(G_mashNumber, G_Canvas.transform);
+            go.GetComponent<RectTransform>().anchoredPosition = V3_mashPos;
+            go.GetComponent<MasherNumber>().S_text = F_Presses.ToString();
+        }
+    }
+    public void mash2(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed && gamemanager.S_curMinigame == "ButtonMash" && !B_mashSpam)
+        {
+            B_mashSpam = (!B_mashSpam);
+            F_Presses++;
+
+            GameObject go = Instantiate(G_mashNumber,G_Canvas.transform);
+            go.GetComponent<RectTransform>().anchoredPosition = V3_mashPos;
+            go.GetComponent<MasherNumber>().S_text = F_Presses.ToString();
+        }
     }
     private IEnumerator ActionCD(float cooldown)
     {
