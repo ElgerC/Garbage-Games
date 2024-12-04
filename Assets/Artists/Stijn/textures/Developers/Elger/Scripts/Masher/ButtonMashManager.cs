@@ -19,6 +19,7 @@ public class ButtonMashManager : MonoBehaviour
     [SerializeField] private TMP_Text Txt_countDown;
 
     private Animator Anim_cameraAnimator;
+    [SerializeField] private GameObject G_crown;
     private void Awake()
     {
         gamemanager = Gamemanager.instance;
@@ -44,8 +45,16 @@ public class ButtonMashManager : MonoBehaviour
             {
                 Anim_cameraAnimator.SetTrigger("Outro");
                 CanPressSwitch(false);
+
+                StartCoroutine(OutroCountdown(i));
             }
         }
+    }
+    private IEnumerator OutroCountdown(int I_winnerIndex)
+    {
+        Instantiate(G_crown, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+        yield return new WaitForSeconds(8);
+        gamemanager.MinigameFinished(I_winnerIndex);
     }
     public void StartGame()
     {

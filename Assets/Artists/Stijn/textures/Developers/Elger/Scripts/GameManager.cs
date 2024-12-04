@@ -1,13 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class Gamemanager : MonoBehaviour
 {
@@ -37,6 +32,8 @@ public class Gamemanager : MonoBehaviour
     [SerializeField] private GameObject G_nameCardPrefab;
 
     [SerializeField] private GameObject G_nameCardCanvas;
+
+    private bool B_tieBreaker = false;
     private void Awake()
     {
         if (instance == null)
@@ -82,7 +79,19 @@ public class Gamemanager : MonoBehaviour
                 players[i].GetComponent<PlayerScript>().ShowWins();
             }
         }
+        else
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                PlayerScript PS_curScript = players[i].GetComponent<PlayerScript>();
 
+                for (int j = 0; j < PS_curScript.L_crownList.Count; j++)
+                {
+                    Destroy(PS_curScript.L_crownList[j]);
+                }
+                PS_curScript.L_crownList = new List<GameObject>();
+            }
+        }
         for (int i = 0; i < players.Count; i++)
         {
             players[i].SetActive(true);
@@ -94,7 +103,7 @@ public class Gamemanager : MonoBehaviour
         S_curMinigame = null;
         while (S_curMinigame == null)
         {
-            minigameIndex = UnityEngine.Random.Range(1, minigames.Count);
+            minigameIndex = Random.Range(1, minigames.Count);
             if (!L_playedMinigames.Contains(minigames[minigameIndex]))
             {
                 S_curMinigame = minigames[minigameIndex];
@@ -104,45 +113,77 @@ public class Gamemanager : MonoBehaviour
     }
     public void MinigameFinished(int winner)
     {
-        if (winner < players.Count)
+        if (!B_tieBreaker)
         {
-            players[winner].GetComponent<PlayerScript>().wins++;
-        }
+            if (winner < players.Count)
+            {
+                players[winner].GetComponent<PlayerScript>().wins++;
+            }
 
-        L_playedMinigames.Add(SceneManager.GetActiveScene().name);
+            L_playedMinigames.Add(SceneManager.GetActiveScene().name);
 
-        minigameIndex = 0;
-        S_curMinigame = "StartScene";
-        SceneManager.LoadScene("StartScene");
+            minigameIndex = 0;
+            S_curMinigame = "StartScene";
+            SceneManager.LoadScene("StartScene");
 
-        if (minigames.Count > 1)
-        {
-            StartCoroutine(Countdown(6));
+            if (L_playedMinigames.Count < minigames.Count - 1)
+            {
+                StartCoroutine(Countdown(6));
+            }
+            else
+            {
+                CheckWinner();
+            }
         }
         else
         {
-            Application.Quit();
+            Debug.Log("Winner = " + players[winner].transform.tag);
+        }
+        
+    }
+    private void CheckWinner()
+    {
+        int I_minWins = 0;
+        List<GameObject> L_winningPlayers = new List<GameObject>();
+
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (players[i].GetComponent<PlayerScript>().wins >= I_minWins)
+            {
+                I_minWins = players[i].GetComponent<PlayerScript>().wins;
+                L_winningPlayers.Add(players[i]);
+            }
+        }
+        if(L_winningPlayers.Count == 0)
+        {
+            Debug.Log("Winner = " + L_winningPlayers[0].transform.tag);
+        }
+        else
+        {
+            players = L_winningPlayers;
+            L_winningPlayers.RemoveAt(Random.Range(0, L_winningPlayers.Count));
+            B_tieBreaker = true;
         }
     }
 
     public void Ready()
     {
-        Debug.Log(B_countingDown);
-
-        if (!B_countingDown)
+        if (L_playedMinigames.Count < minigames.Count - 1)
         {
-            Txt_timerTxt.gameObject.SetActive(true);
-            StartCoroutine(Countdown(6));
-        }
+            if (!B_countingDown)
+            {
+                Txt_timerTxt.gameObject.SetActive(true);
+                StartCoroutine(Countdown(6));
+            }
 
-        else
-        {
-            Txt_timerTxt.gameObject.SetActive(false);
-            StopAllCoroutines();
-            B_countingDown = false;
-            Txt_timerTxt.text = "0";
+            else
+            {
+                Txt_timerTxt.gameObject.SetActive(false);
+                StopAllCoroutines();
+                B_countingDown = false;
+                Txt_timerTxt.text = "0";
+            }
         }
-
     }
     IEnumerator Countdown(int time)
     {

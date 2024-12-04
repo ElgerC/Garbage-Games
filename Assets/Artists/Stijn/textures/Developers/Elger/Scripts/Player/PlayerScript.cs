@@ -45,8 +45,10 @@ public class PlayerScript : MonoBehaviour
     private GameObject G_namecard;
 
     public int wins = 0;
+    [SerializeField] private GameObject G_crown;
+    public List<GameObject> L_crownList = new List<GameObject>();
 
-    private Animator Anim_modelAnimator;
+    //public Animator Anim_modelAnimator;
 
     private void Awake()
     {
@@ -59,18 +61,17 @@ public class PlayerScript : MonoBehaviour
     private void Start()
     {
         gamemanager.AddPlayers(gameObject);
-        Anim_modelAnimator = GetComponentInChildren<Animator>();
     }
     public void OnMove(InputAction.CallbackContext context)
     {
         if (context.performed && gamemanager.S_curMinigame == "HotPotato" || context.performed && gamemanager.S_curMinigame == "RandomDoor")
         {
             movementInput = context.ReadValue<Vector2>();
-            Anim_modelAnimator.SetBool("Walking", true);
+            //Anim_modelAnimator.SetBool("Walking", true);
         }
-        else
+        else if (gamemanager.S_curMinigame == "HotPotato" || gamemanager.S_curMinigame == "ElgerScene")
         {
-            Anim_modelAnimator.SetBool("Walking", false);
+            //Anim_modelAnimator.SetBool("Walking", false);
         }
     }
 
@@ -196,6 +197,8 @@ public class PlayerScript : MonoBehaviour
     public void ChangeApearance(PlayerApearanceScrptObj apearance)
     {
         Instantiate(apearance.G_model, new Vector3(0, -0.5f, 0), Quaternion.Euler(0, 90, 0), transform);
+        //Anim_modelAnimator = apearance.G_model.GetComponent<Animator>();
+
         C_playerColor = apearance.C_color;
 
         if (!G_namecard)
@@ -203,9 +206,16 @@ public class PlayerScript : MonoBehaviour
             G_namecard = gamemanager.CreateNamecard();
         }
         G_namecard.GetComponent<Image>().sprite = apearance.namecard;
+
     }
     public void ShowWins()
     {
         G_namecard.GetComponent<NameCardScript>().PlaceCrowns(wins);
+        for(int i = 0; i < wins; i++)
+        {
+            GameObject G_go = Instantiate(G_crown, transform);
+            G_go.transform.localPosition = new Vector3(0, i+1, 0);
+            L_crownList.Add(G_go);
+        }
     }
 }
