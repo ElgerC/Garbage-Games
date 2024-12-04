@@ -15,6 +15,7 @@ public class Gamemanager : MonoBehaviour
 
     public List<GameObject> players = new List<GameObject>();
     public List<string> minigames = new List<string>();
+    public List<string> L_playedMinigames = new List<string>();
 
 
 
@@ -49,7 +50,7 @@ public class Gamemanager : MonoBehaviour
     public GameObject CreateNamecard()
     {
 
-        GameObject go = Instantiate(G_nameCardPrefab,G_nameCardCanvas.transform);
+        GameObject go = Instantiate(G_nameCardPrefab, G_nameCardCanvas.transform);
         go.GetComponent<RectTransform>().anchoredPosition = V3_nameCardPositions[players.Count - 1];
         return go;
     }
@@ -59,7 +60,7 @@ public class Gamemanager : MonoBehaviour
 
         players.Add(newPlayer);
 
-        newPlayer.GetComponent<PlayerScript>().ChangeApearance(L_apearances[players.Count-1]);
+        newPlayer.GetComponent<PlayerScript>().ChangeApearance(L_apearances[players.Count - 1]);
 
         newPlayer.transform.position = gameManagerData.m_MinigamesData[minigameIndex].startPositions[players.Count - 1];
     }
@@ -76,6 +77,10 @@ public class Gamemanager : MonoBehaviour
         if (S_curMinigame == "StartScene")
         {
             Txt_timerTxt = GameObject.FindWithTag("Countdown").GetComponent<TMP_Text>();
+            for (int i = 0; i < players.Count; i++)
+            {
+                players[i].GetComponent<PlayerScript>().ShowWins();
+            }
         }
 
         for (int i = 0; i < players.Count; i++)
@@ -86,8 +91,15 @@ public class Gamemanager : MonoBehaviour
     }
     public string ChooseScene()
     {
-        minigameIndex = UnityEngine.Random.Range(1, minigames.Count);
-        S_curMinigame = minigames[minigameIndex];
+        S_curMinigame = null;
+        while (S_curMinigame == null)
+        {
+            minigameIndex = UnityEngine.Random.Range(1, minigames.Count);
+            if (!L_playedMinigames.Contains(minigames[minigameIndex]))
+            {
+                S_curMinigame = minigames[minigameIndex];
+            }
+        }
         return S_curMinigame;
     }
     public void MinigameFinished(int winner)
@@ -97,16 +109,17 @@ public class Gamemanager : MonoBehaviour
             players[winner].GetComponent<PlayerScript>().wins++;
         }
 
-        minigames.Remove(SceneManager.GetActiveScene().name);
+        L_playedMinigames.Add(SceneManager.GetActiveScene().name);
 
         minigameIndex = 0;
         S_curMinigame = "StartScene";
         SceneManager.LoadScene("StartScene");
-        
-        if (minigames.Count > 1) 
+
+        if (minigames.Count > 1)
         {
             StartCoroutine(Countdown(6));
-        } else
+        }
+        else
         {
             Application.Quit();
         }
