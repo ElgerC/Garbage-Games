@@ -237,6 +237,7 @@ MonoBehaviour:
   G_mashNumber: {fileID: 6232581913529004753, guid: e01917e1145708e4ea04bb175cc0eb01,
     type: 3}
   G_Canvas: {fileID: 0}
+  G_throw: {fileID: 8777131584269462928, guid: b9c5af7c86a37314997b5d235ee60d8d, type: 3}
 --- !u!114 &6502186858853229178
 MonoBehaviour:
   m_ObjectHideFlags: 0

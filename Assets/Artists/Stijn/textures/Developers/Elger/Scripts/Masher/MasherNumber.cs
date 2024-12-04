@@ -18,7 +18,7 @@ public class MasherNumber : MonoBehaviour
     private void Update()
     {
         T_text.text = S_text;
-        RT_rectTransform.anchoredPosition = new Vector2(RT_rectTransform.anchoredPosition.x, RT_rectTransform.anchoredPosition.y + 1f);
+        RT_rectTransform.anchoredPosition = new Vector2(RT_rectTransform.anchoredPosition.x, RT_rectTransform.anchoredPosition.y + 4f);
     }
 
     public void DestroySelf() 

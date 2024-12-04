@@ -1,23 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ButtonMashManager : MonoBehaviour
 {
-    [SerializeField] private List<PlayerScript> L_PlayerScripts = new List<PlayerScript>();
+    [SerializeField] private List<PlayerMasher> L_PlayerScripts = new List<PlayerMasher>();
     Gamemanager gamemanager;
     [SerializeField] float winPresses;
 
     [SerializeField] private List<Vector3> L_NumberPos = new List<Vector3>();
+    [SerializeField] private GameObject G_mashNumber;
+
+    [SerializeField] private GameObject G_throw;
+
+    [SerializeField] private List<GameObject> G_piles = new List<GameObject>();
+
+    [SerializeField] private TMP_Text Txt_countDown;
+
+    private Animator Anim_cameraAnimator;
     private void Awake()
     {
         gamemanager = Gamemanager.instance;
 
+        Anim_cameraAnimator = GetComponent<Animator>();
         for (int i = 0; i < gamemanager.players.Count; i++)
         {
-            L_PlayerScripts.Add(gamemanager.players[i].GetComponent<PlayerScript>());
-            L_PlayerScripts[i].V3_mashPos = L_NumberPos[i];
-            L_PlayerScripts[i].G_Canvas = FindObjectOfType<Canvas>().gameObject;
+            PlayerMasher go = Gamemanager.instance.players[i].AddComponent<PlayerMasher>();
+
+            go.V3_mashPos = L_NumberPos[i];
+            go.G_mashNumber = G_mashNumber;
+            go.G_throw = G_throw;
+            go.G_Pile = G_piles[i];
+            
+            L_PlayerScripts.Add(go);
         }
     }
     private void Update()
@@ -26,8 +42,33 @@ public class ButtonMashManager : MonoBehaviour
         {
             if (L_PlayerScripts[i].F_Presses >= winPresses)
             {
-                gamemanager.MinigameFinished(i);
+                Anim_cameraAnimator.SetTrigger("Outro");
+                CanPressSwitch(false);
             }
+        }
+    }
+    public void StartGame()
+    {
+        StartCoroutine(Countdown());
+    }
+    private IEnumerator Countdown()
+    {
+        yield return new WaitForSeconds(1);
+        Txt_countDown.gameObject.SetActive(true);
+        Txt_countDown.text = "Ready?";
+        yield return new WaitForSeconds(1);
+        Txt_countDown.text = "Set";
+        yield return new WaitForSeconds(1);
+        Txt_countDown.text = "Go!";
+        yield return new WaitForSeconds(0.5f);
+        Txt_countDown.gameObject.SetActive(false);
+        CanPressSwitch(true);
+    }
+    private void CanPressSwitch(bool option)
+    {
+        for (int i = 0; i < L_PlayerScripts.Count; i++)
+        {
+            L_PlayerScripts[i].B_canAct = option;
         }
     }
 }
