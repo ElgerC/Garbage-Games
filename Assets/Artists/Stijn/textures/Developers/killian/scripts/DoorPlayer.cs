@@ -42,8 +42,8 @@ public class DoorPlayer : MonoBehaviour
     //teleports the player when the door is correct to the nexxt floor, switch statement checks the current from on the character and teleports to them to the correct floor.
     public IEnumerator NextFloor(GameObject Door)
     {
-        Door.GetComponent<Animator>().SetTrigger("Open");
-        yield return new WaitForSeconds(0.1f);
+        Door.GetComponentInParent<Animator>().SetTrigger("Open");
+        yield return new WaitForSeconds(6f);
 
         if( Door.GetComponent<DoorMinigameDoors>().CorrectDoor == true)
         {
