@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7000683070383934694}
   - component: {fileID: 2932395782259040980}
   m_Layer: 0
-  m_Name: PP_RandomDoor
+  m_Name: PP_Start scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
