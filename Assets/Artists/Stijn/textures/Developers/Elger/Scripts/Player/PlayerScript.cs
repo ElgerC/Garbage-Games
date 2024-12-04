@@ -46,6 +46,8 @@ public class PlayerScript : MonoBehaviour
 
     public int wins = 0;
 
+    private Animator Anim_modelAnimator;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -57,12 +59,18 @@ public class PlayerScript : MonoBehaviour
     private void Start()
     {
         gamemanager.AddPlayers(gameObject);
+        Anim_modelAnimator = GetComponentInChildren<Animator>();
     }
     public void OnMove(InputAction.CallbackContext context)
     {
         if (context.performed && gamemanager.S_curMinigame == "HotPotato" || context.performed && gamemanager.S_curMinigame == "RandomDoor")
         {
             movementInput = context.ReadValue<Vector2>();
+            Anim_modelAnimator.SetBool("Walking", true);
+        }
+        else
+        {
+            Anim_modelAnimator.SetBool("Walking", false);
         }
     }
 
@@ -134,7 +142,7 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = move;
             transform.forward = move;
         }
-        if (gamemanager.S_curMinigame == "HotPotato" || gamemanager.S_curMinigame == "RandomDoor")
+        if (gamemanager.S_curMinigame == "HotPotato")
             if (rb.velocity.magnitude < 4f && rb.velocity.magnitude > -1f)
             {
                 rb.drag = 0;
