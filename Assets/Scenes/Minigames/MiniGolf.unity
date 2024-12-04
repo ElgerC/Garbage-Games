@@ -15609,6 +15609,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2abc876427c83dc4eaac30ec4a820cc6, type: 3}
+--- !u!1001 &1482196586
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3071503022280593503, guid: 9765c1941ad95d04687793ed1974f2a5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 29.971865
+      objectReference: {fileID: 0}
+    - target: {fileID: 3071503022280593503, guid: 9765c1941ad95d04687793ed1974f2a5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.0111017
+      objectReference: {fileID: 0}
+    - target: {fileID: 3071503022280593503, guid: 9765c1941ad95d04687793ed1974f2a5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 31.05959
+      objectReference: {fileID: 0}
+    - target: {fileID: 3071503022280593503, guid: 9765c1941ad95d04687793ed1974f2a5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3071503022280593503, guid: 9765c1941ad95d04687793ed1974f2a5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3071503022280593503, guid: 9765c1941ad95d04687793ed1974f2a5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3071503022280593503, guid: 9765c1941ad95d04687793ed1974f2a5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3071503022280593503, guid: 9765c1941ad95d04687793ed1974f2a5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3071503022280593503, guid: 9765c1941ad95d04687793ed1974f2a5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3071503022280593503, guid: 9765c1941ad95d04687793ed1974f2a5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545503847778095688, guid: 9765c1941ad95d04687793ed1974f2a5,
+        type: 3}
+      propertyPath: m_Name
+      value: BU PP_MiniGolf
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9765c1941ad95d04687793ed1974f2a5, type: 3}
 --- !u!1 &1493079859
 GameObject:
   m_ObjectHideFlags: 0
@@ -21568,3 +21636,4 @@ SceneRoots:
   - {fileID: 386674238}
   - {fileID: 439636358}
   - {fileID: 830701632}
+  - {fileID: 1482196586}
