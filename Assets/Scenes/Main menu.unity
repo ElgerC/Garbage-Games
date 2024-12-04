@@ -404,7 +404,8 @@ PrefabInstance:
         type: 3}
       propertyPath: sharedProfile
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823,
+        type: 2}
     - target: {fileID: 5589009976090469325, guid: 937e109462d73e0429fb989c606ac44b,
         type: 3}
       propertyPath: m_LocalPosition.x
