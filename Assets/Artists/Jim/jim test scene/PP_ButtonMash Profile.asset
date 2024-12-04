@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb4b772797da9440885e8bd939e9560, type: 3}
   m_Name: ColorCurves
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   master:
     m_OverrideState: 0
     m_Value:
@@ -196,19 +196,19 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.23739837
-          value: 0.42087543
-          inSlope: 0.047061566
-          outSlope: 0.047061566
+          time: 0.2392453
+          value: 0.5
+          inSlope: 0.34065494
+          outSlope: 0.34065494
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.7512195
-          value: 0.42087543
-          inSlope: 0
-          outSlope: 0
+          time: 0.6603773
+          value: 0.6285714
+          inSlope: -0.3505294
+          outSlope: -0.3505294
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
@@ -240,13 +240,13 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 1, y: 0.99761105, z: 0.8865763, w: -0.031545743}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 0.8700254, y: 0.909537, z: 1, w: 0.15772824}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 0.6755372, y: 0.66838455, z: 1, w: 0}
 --- !u!114 &-2738321613100056867
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -259,16 +259,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   skipIterations:
     m_OverrideState: 0
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.9
+    m_Value: 1.45
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.56
   scatter:
     m_OverrideState: 1
     m_Value: 0.7
@@ -349,16 +349,16 @@ MonoBehaviour:
   active: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    m_Value: {r: 1, g: 0.9605453, b: 0.36477983, a: 1}
   center:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.366
+    m_Value: 0.43
   smoothness:
-    m_OverrideState: 0
-    m_Value: 0.2
+    m_OverrideState: 1
+    m_Value: 0.257
   rounded:
     m_OverrideState: 0
     m_Value: 0
@@ -396,10 +396,10 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 0.90422714, y: 0.93518996, z: 1, w: 0.5205049}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 1, y: 0.986015, z: 0.9534163, w: -0.06834904}
   highlights:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1, z: 1, w: 0}
