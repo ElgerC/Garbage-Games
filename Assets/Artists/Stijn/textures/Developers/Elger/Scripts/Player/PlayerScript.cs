@@ -60,7 +60,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (context.performed && gamemanager.S_curMinigame == "HotPotato")
+        if (context.performed && gamemanager.S_curMinigame == "HotPotato" || context.performed && gamemanager.S_curMinigame == "RandomDoor")
         {
             movementInput = context.ReadValue<Vector2>();
         }
@@ -134,7 +134,7 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = move;
             transform.forward = move;
         }
-        if (gamemanager.S_curMinigame == "HotPotato")
+        if (gamemanager.S_curMinigame == "HotPotato" || gamemanager.S_curMinigame == "RandomDoor")
             if (rb.velocity.magnitude < 4f && rb.velocity.magnitude > -1f)
             {
                 rb.drag = 0;
@@ -195,6 +195,9 @@ public class PlayerScript : MonoBehaviour
             G_namecard = gamemanager.CreateNamecard();
         }
         G_namecard.GetComponent<Image>().sprite = apearance.namecard;
-
+    }
+    public void ShowWins()
+    {
+        G_namecard.GetComponent<NameCardScript>().PlaceCrowns(wins);
     }
 }

@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class NameCardScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private List<GameObject> crowns = new List<GameObject>();
+    private void Start()
     {
-        
+        for (int i = 0; i < crowns.Count; i++)
+        {
+            crowns[i].SetActive(false);
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    public void PlaceCrowns(int amount)
     {
-        
+        for (int i = 0; i < amount; i++)
+        {
+            crowns[i].SetActive(true);
+        }
     }
 }
