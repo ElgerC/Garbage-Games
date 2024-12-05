@@ -48,6 +48,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameObject G_crown;
     public List<GameObject> L_crownList = new List<GameObject>();
 
+    private PlayerMasher masher;
+
     //public Animator Anim_modelAnimator;
 
     private void Awake()
@@ -74,7 +76,21 @@ public class PlayerScript : MonoBehaviour
             //Anim_modelAnimator.SetBool("Walking", false);
         }
     }
-
+    public void OnMash1(InputAction.CallbackContext context)
+    {
+        if (context.performed && gamemanager.S_curMinigame == "ButtonMash")
+        {
+            Debug.Log("PlayerMash");
+            gameObject.GetComponent<PlayerMasher>().Mash_performed1();
+        }
+    }
+    public void OnMash2(InputAction.CallbackContext context)
+    {
+        if (context.performed && gamemanager.S_curMinigame == "ButtonMash")
+        {
+            gameObject.GetComponent<PlayerMasher>().Mash_performed2();
+        }
+    }
     public void OnInteract(InputAction.CallbackContext context)
     {
         if(G_golfBall != null && gamemanager.S_curMinigame == "MiniGolf")
@@ -210,6 +226,11 @@ public class PlayerScript : MonoBehaviour
     }
     public void ShowWins()
     {
+        if (GetComponent<HotPotatoPlayer>())
+        {
+            Destroy(GetComponent<HotPotatoPlayer>());
+        }
+
         G_namecard.GetComponent<NameCardScript>().PlaceCrowns(wins);
         for(int i = 0; i < wins; i++)
         {

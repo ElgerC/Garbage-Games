@@ -35,6 +35,7 @@ public class ButtonMashManager : MonoBehaviour
             go.G_mashNumber = G_mashNumber;
             go.G_throw = G_throw;
             go.G_Pile = G_piles[i];
+            go.G_Canvas = FindObjectOfType<Canvas>().gameObject;
             
             L_PlayerScripts.Add(go);
         }

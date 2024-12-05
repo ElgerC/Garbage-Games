@@ -233,6 +233,7 @@ MonoBehaviour:
   S_namecard: {fileID: 0}
   wins: 0
   G_crown: {fileID: 7896652524852884164, guid: 4537b51dc3a8efc4798357ead8923c21, type: 3}
+  L_crownList: []
 --- !u!114 &6502186858853229178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,7 +308,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3149988764774393292}
         m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
-        m_MethodName: mash1
+        m_MethodName: OnMash1
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -323,7 +324,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3149988764774393292}
         m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
-        m_MethodName: mash2
+        m_MethodName: OnMash2
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
