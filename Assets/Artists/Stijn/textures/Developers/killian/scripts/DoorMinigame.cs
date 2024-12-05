@@ -36,6 +36,12 @@ public class DoorMinigame : MonoBehaviour
     [SerializeField]
     public int I_CorrectDoorF4;
 
+    [SerializeField]
+    public GameObject[] GO_WrongDoorsTeleport;
+
+    [SerializeField]
+    public GameObject AwaitingTeleport;
+
     // Start is called before the first frame update
     public void Start()
     {

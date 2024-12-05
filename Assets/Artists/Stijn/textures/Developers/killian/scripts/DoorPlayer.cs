@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEditor;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class DoorPlayer : MonoBehaviour
 {
@@ -26,8 +28,9 @@ public class DoorPlayer : MonoBehaviour
     // actual collision check
     public void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.CompareTag("DoorMinigame"))
+        if (collision.transform.CompareTag("DoorMinigame"))
         {
+            transform.position = DoorMinigame.AwaitingTeleport.transform.position;
             FloorTeleport(collision.gameObject);
         }
 
@@ -45,7 +48,8 @@ public class DoorPlayer : MonoBehaviour
         Door.GetComponentInParent<Animator>().SetTrigger("Open");
         yield return new WaitForSeconds(6f);
 
-        if( Door.GetComponent<DoorMinigameDoors>().CorrectDoor == true)
+
+        if ( Door.GetComponent<DoorMinigameDoors>().CorrectDoor == true)
         {
             switch (CurrentFloor)
             {
@@ -75,6 +79,23 @@ public class DoorPlayer : MonoBehaviour
                     Gamemanager.instance.MinigameFinished(9);
 
                     this.GetComponent<PlayerScript>().wins++;
+                    break;
+            }
+        }else if(Door.GetComponent<DoorMinigameDoors>().CorrectDoor != true)
+        {
+            switch (CurrentFloor)
+            {
+                case 4:
+                    transform.position = DoorMinigame.GO_WrongDoorsTeleport[0].transform.position;
+                    break;
+                case 3:
+                    transform.position = DoorMinigame.GO_WrongDoorsTeleport[1].transform.position;
+                    break;
+                case 2: 
+                    transform.position = DoorMinigame.GO_WrongDoorsTeleport[2].transform.position;
+                    break;
+                case 1: 
+                    transform.position = DoorMinigame.GO_WrongDoorsTeleport[3].transform.position;
                     break;
             }
         }
