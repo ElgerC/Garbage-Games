@@ -87,9 +87,22 @@ public class HotPotato : MonoBehaviour
 
         if (GO_Players.Count == 1)
         {
-            Gamemanager.instance.MinigameFinished(8);
-
-            GO_Players[0].GetComponent<PlayerScript>().wins++;
+            Gamemanager.instance.MinigameFinished(FindWinner());
         }
+
+    }
+
+    //Made by Elger
+    private int FindWinner()
+    {
+        for (int i = 0;i < gamemanager.players.Count; i++)
+        {
+            GameObject G_obj = gamemanager.players[i];
+            if (G_obj.tag == GO_Players[0].tag)
+            {
+                return i;
+            }           
+        }
+        return 0;
     }
 }

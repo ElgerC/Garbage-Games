@@ -9,7 +9,7 @@ public class Gamemanager : MonoBehaviour
     public static Gamemanager instance;
 
     public List<GameObject> players = new List<GameObject>();
-    private List<GameObject> lostPlayers = new List<GameObject>();
+    [SerializeField] private List<GameObject> lostPlayers = new List<GameObject>();
 
     public List<string> minigames = new List<string>();
     public List<string> L_playedMinigames = new List<string>();
@@ -32,7 +32,7 @@ public class Gamemanager : MonoBehaviour
 
     [SerializeField] private GameObject G_nameCardCanvas;
 
-    private bool B_tieBreaker = false;
+    [SerializeField] private bool B_tieBreaker = false;
     private void Awake()
     {
         if (instance == null)
@@ -120,13 +120,11 @@ public class Gamemanager : MonoBehaviour
             }
 
             L_playedMinigames.Add(SceneManager.GetActiveScene().name);
-
-            minigameIndex = 0;
-            S_curMinigame = "StartScene";
-            SceneManager.LoadScene("StartScene");
-
             if (L_playedMinigames.Count < minigames.Count - 2)
             {
+                minigameIndex = 0;
+                S_curMinigame = "StartScene";
+                SceneManager.LoadScene("StartScene");
                 StartCoroutine(Countdown(6));
             }
             else
@@ -136,11 +134,15 @@ public class Gamemanager : MonoBehaviour
         }
         else
         {
+            lostPlayers.Add(players.Find(obj=>obj.tag != players[winner].tag));
+
+            Debug.Log(winner);
             EndGame(players[winner]);
         } 
     }
     private void EndGame(GameObject G_winner)
     {
+        Debug.Log(G_winner);
         players.Clear();
         players.Add(G_winner);
 
@@ -161,22 +163,34 @@ public class Gamemanager : MonoBehaviour
                 I_minWins = players[i].GetComponent<PlayerScript>().wins;
             }
         }
+
         for (int i = 0;i < players.Count;i++)
         {
             if (players[i].GetComponent<PlayerScript>().wins < I_minWins)
             {
-                lostPlayers.Add(players[i]);
-                players.RemoveAt(i);            
+                lostPlayers.Add(players[i]);      
             }
         }
-        if(players.Count == 1)
+
+        for (int i = 0; i < lostPlayers.Count; i++)
         {
+            players.Remove(players.Find(obj=>obj.tag == lostPlayers[i].tag));
+        }
+
+        if (players.Count == 1)
+        {
+            Debug.Log("Single winner");
             EndGame(players[0]);
         }
         else
         {
+            Debug.Log("Tie");
             L_playedMinigames.RemoveAt(Random.Range(0, L_playedMinigames.Count));
             B_tieBreaker = true;
+
+            minigameIndex = 0;
+            S_curMinigame = "StartScene";
+            SceneManager.LoadScene("StartScene");
             StartCoroutine(Countdown(6));
         }
     }

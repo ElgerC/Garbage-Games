@@ -76,9 +76,8 @@ public class DoorPlayer : MonoBehaviour
 
                     CurrentFloor--;
 
-                    Gamemanager.instance.MinigameFinished(9);
+                    Gamemanager.instance.MinigameFinished(FindWinner());
 
-                    this.GetComponent<PlayerScript>().wins++;
                     break;
             }
         }else if(Door.GetComponent<DoorMinigameDoors>().CorrectDoor != true)
@@ -99,5 +98,18 @@ public class DoorPlayer : MonoBehaviour
                     break;
             }
         }
+    }
+    //Made by Elger
+    private int FindWinner()
+    {
+        for (int i = 0; i < gamemanager.players.Count; i++)
+        {
+            GameObject G_obj = gamemanager.players[i];
+            if (G_obj.tag == transform.tag)
+            {
+                return i;
+            }
+        }
+        return 0;
     }
 }
