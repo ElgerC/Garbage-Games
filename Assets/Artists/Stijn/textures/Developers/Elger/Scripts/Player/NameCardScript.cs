@@ -14,10 +14,11 @@ public class NameCardScript : MonoBehaviour
     }
     public void PlaceCrowns(int amount)
     {
-        if (amount < 4)
-            for (int i = 0; i < amount; i++)
-            {
+
+        for (int i = 0; i < amount; i++)
+        {
+            if (i < 3)
                 crowns[i].SetActive(true);
-            }
+        }
     }
 }

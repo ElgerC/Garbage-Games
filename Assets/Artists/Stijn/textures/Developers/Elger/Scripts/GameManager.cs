@@ -102,7 +102,7 @@ public class Gamemanager : MonoBehaviour
         S_curMinigame = null;
         while (S_curMinigame == null)
         {
-            minigameIndex = Random.Range(1, minigames.Count);
+            minigameIndex = Random.Range(1, minigames.Count-1);
             if (!L_playedMinigames.Contains(minigames[minigameIndex]))
             {
                 S_curMinigame = minigames[minigameIndex];
@@ -125,7 +125,7 @@ public class Gamemanager : MonoBehaviour
             S_curMinigame = "StartScene";
             SceneManager.LoadScene("StartScene");
 
-            if (L_playedMinigames.Count < minigames.Count - 1)
+            if (L_playedMinigames.Count < minigames.Count - 2)
             {
                 StartCoroutine(Countdown(6));
             }
@@ -148,7 +148,7 @@ public class Gamemanager : MonoBehaviour
         {
             players.Add(lostPlayers[i]);
         }
-        Debug.Log("Winner = " + players[0].transform.tag);
+        SceneManager.LoadScene(minigames[minigames.Count - 1]);
     }
     private void CheckWinner()
     {
@@ -183,7 +183,7 @@ public class Gamemanager : MonoBehaviour
 
     public void Ready()
     {
-        if (L_playedMinigames.Count < minigames.Count - 1)
+        if (L_playedMinigames.Count < minigames.Count - 2)
         {
             if (!B_countingDown)
             {

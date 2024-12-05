@@ -5227,6 +5227,9 @@ MonoBehaviour:
   - StartScene
   - ButtonMash
   - HotPotato
+  - MiniGolf
+  - RandomDoor
+  - End Screen
   L_playedMinigames: []
   S_curMinigame: StartScene
   Txt_timerTxt: {fileID: 1875684538}
@@ -6145,8 +6148,9 @@ MonoBehaviour:
 
     Press Interact to start'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: badae08087b9f044da837208e57c9729, type: 2}
+  m_sharedMaterial: {fileID: -4993355425575726581, guid: badae08087b9f044da837208e57c9729,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6911,8 +6915,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 801aed695eebe4b4483003c57335fae0, type: 2}
+  m_sharedMaterial: {fileID: 2172190212302664940, guid: 801aed695eebe4b4483003c57335fae0,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

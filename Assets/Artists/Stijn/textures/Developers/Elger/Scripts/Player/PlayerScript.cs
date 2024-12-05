@@ -238,6 +238,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void ShowWins()
     {
+        rb.velocity = Vector3.zero;
         if (GetComponent<HotPotatoPlayer>())
         {
             Destroy(GetComponent<HotPotatoPlayer>());
