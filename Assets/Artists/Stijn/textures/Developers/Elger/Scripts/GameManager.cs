@@ -30,7 +30,7 @@ public class Gamemanager : MonoBehaviour
     [SerializeField] private List<Vector3> V3_nameCardPositions = new List<Vector3>();
     [SerializeField] private GameObject G_nameCardPrefab;
 
-    [SerializeField] private GameObject G_nameCardCanvas;
+    public GameObject G_nameCardCanvas;
 
     [SerializeField] private bool B_tieBreaker = false;
     private void Awake()
@@ -150,6 +150,8 @@ public class Gamemanager : MonoBehaviour
         {
             players.Add(lostPlayers[i]);
         }
+        minigameIndex = minigames.Count-1;
+        S_curMinigame = "End screen";
         SceneManager.LoadScene(minigames[minigames.Count - 1]);
     }
     private void CheckWinner()

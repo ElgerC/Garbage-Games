@@ -98,6 +98,10 @@ public class PlayerScript : MonoBehaviour
             gameObject.GetComponent<PlayerMasher>().Mash_performed2();
         }
     }
+    public void Quit()
+    {
+       Application.Quit();
+    }
     public void OnInteract(InputAction.CallbackContext context)
     {
         if (G_golfBall != null && gamemanager.S_curMinigame == "MiniGolf")
@@ -169,8 +173,12 @@ public class PlayerScript : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+        if (gamemanager.S_curMinigame == "End screen")
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
 
-        
+
         if (gamemanager.S_curMinigame == "HotPotato")
             if (rb.velocity.magnitude < 4f && rb.velocity.magnitude > -1f)
             {

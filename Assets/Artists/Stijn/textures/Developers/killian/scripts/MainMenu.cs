@@ -7,7 +7,19 @@ public class MainMenu : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("StartScene");
+        SceneManager.LoadScene("ElgerScene");
+
+
+        //Edited by Elger
+        if(FindObjectOfType<Gamemanager>() != null)
+        {
+            for (int i = 0; i < Gamemanager.instance.players.Count; i++)
+            {
+                Destroy(FindObjectOfType<PlayerScript>().gameObject);
+            }
+            Destroy(FindObjectOfType<Gamemanager>().G_nameCardCanvas);
+            Destroy(FindObjectOfType<Gamemanager>().gameObject);
+        }
     }
 
     public void QuitGame()
