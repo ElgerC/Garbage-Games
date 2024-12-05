@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    Animator animator;
+    [SerializeField] private AudioSource source;
+    private void Awake()
+    {
+        source.Play();
+    }
     public void StartGame()
     {
         SceneManager.LoadScene("ElgerScene");
@@ -20,6 +26,12 @@ public class MainMenu : MonoBehaviour
             Destroy(FindObjectOfType<Gamemanager>().G_nameCardCanvas);
             Destroy(FindObjectOfType<Gamemanager>().gameObject);
         }
+    }
+
+    public void StartAnimation()
+    {
+        animator = GetComponent<Animator>();
+        animator.SetTrigger("Start");
     }
 
     public void QuitGame()

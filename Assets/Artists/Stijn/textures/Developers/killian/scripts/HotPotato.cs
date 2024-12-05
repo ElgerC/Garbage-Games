@@ -23,8 +23,11 @@ public class HotPotato : MonoBehaviour
 
     Gamemanager gamemanager;
 
+    [SerializeField] private AudioSource source;
+
     private void Awake()
     {
+        source.Play();
         gamemanager =  Gamemanager.instance;
     }
     // Start is called before the first frame update

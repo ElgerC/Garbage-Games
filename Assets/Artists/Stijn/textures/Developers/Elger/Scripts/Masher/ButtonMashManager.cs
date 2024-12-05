@@ -22,8 +22,11 @@ public class ButtonMashManager : MonoBehaviour
 
     [SerializeField] private GameObject G_crown;
     private bool B_Crowned = false;
+
+    [SerializeField] private AudioSource source;
     private void Awake()
     {
+        source.Play();
         gamemanager = Gamemanager.instance;
 
         Anim_cameraAnimator = GetComponent<Animator>();

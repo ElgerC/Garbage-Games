@@ -42,6 +42,13 @@ public class DoorMinigame : MonoBehaviour
     [SerializeField]
     public GameObject AwaitingTeleport;
 
+    [SerializeField] private AudioSource source;
+
+    private void Awake()
+    {
+        source.Play();
+    }
+
     // Start is called before the first frame update
     public void Start()
     {

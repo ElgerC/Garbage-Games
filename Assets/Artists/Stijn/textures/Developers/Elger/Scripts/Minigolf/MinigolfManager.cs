@@ -42,6 +42,8 @@ public class MinigolfManager : MonoBehaviour
     public GameObject G_club;
     public Animator Anim_clubAnim;
 
+    [SerializeField] private AudioSource source;
+
     private void Awake()
     {
         if (instance == null)
@@ -51,6 +53,7 @@ public class MinigolfManager : MonoBehaviour
         else
             Destroy(this);
 
+        source.Play();
         Anim_clubAnim = G_club.GetComponentInChildren<Animator>();
         G_club.SetActive(false);
     }

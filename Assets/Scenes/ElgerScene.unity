@@ -5223,6 +5223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
+  lostPlayers: []
   minigames:
   - StartScene
   - ButtonMash
@@ -5247,6 +5248,7 @@ MonoBehaviour:
   G_nameCardPrefab: {fileID: 3069752017577008834, guid: f4b7b120fb7d3fd428958c053ff37cc1,
     type: 3}
   G_nameCardCanvas: {fileID: 2098967714}
+  B_tieBreaker: 0
 --- !u!4 &1521331646
 Transform:
   m_ObjectHideFlags: 0
