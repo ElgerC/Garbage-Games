@@ -1,19 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class Gamemanager : MonoBehaviour
 {
     public static Gamemanager instance;
 
     public List<GameObject> players = new List<GameObject>();
+    private List<GameObject> lostPlayers = new List<GameObject>();
+
     public List<string> minigames = new List<string>();
     public List<string> L_playedMinigames = new List<string>();
 
@@ -29,14 +27,13 @@ public class Gamemanager : MonoBehaviour
 
     [SerializeField] private GamaManagerScrptObj gameManagerData;
 
-    public List<Color> colorList = new List<Color>();
-    public List<GameObject> L_models = new List<GameObject>();
-
     [SerializeField] private List<PlayerApearanceScrptObj> L_apearances = new List<PlayerApearanceScrptObj>();
     [SerializeField] private List<Vector3> V3_nameCardPositions = new List<Vector3>();
     [SerializeField] private GameObject G_nameCardPrefab;
 
     [SerializeField] private GameObject G_nameCardCanvas;
+
+    private bool B_tieBreaker = false;
     private void Awake()
     {
         if (instance == null)
@@ -82,7 +79,19 @@ public class Gamemanager : MonoBehaviour
                 players[i].GetComponent<PlayerScript>().ShowWins();
             }
         }
+        else
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                PlayerScript PS_curScript = players[i].GetComponent<PlayerScript>();
 
+                for (int j = 0; j < PS_curScript.L_crownList.Count; j++)
+                {
+                    Destroy(PS_curScript.L_crownList[j]);
+                }
+                PS_curScript.L_crownList = new List<GameObject>();
+            }
+        }
         for (int i = 0; i < players.Count; i++)
         {
             players[i].SetActive(true);
@@ -94,7 +103,7 @@ public class Gamemanager : MonoBehaviour
         S_curMinigame = null;
         while (S_curMinigame == null)
         {
-            minigameIndex = UnityEngine.Random.Range(1, minigames.Count);
+            minigameIndex = Random.Range(1, minigames.Count);
             if (!L_playedMinigames.Contains(minigames[minigameIndex]))
             {
                 S_curMinigame = minigames[minigameIndex];
@@ -104,45 +113,93 @@ public class Gamemanager : MonoBehaviour
     }
     public void MinigameFinished(int winner)
     {
-        if (winner < players.Count)
+        if (!B_tieBreaker)
         {
-            players[winner].GetComponent<PlayerScript>().wins++;
-        }
+            if (winner < players.Count)
+            {
+                players[winner].GetComponent<PlayerScript>().wins++;
+            }
 
-        L_playedMinigames.Add(SceneManager.GetActiveScene().name);
+            L_playedMinigames.Add(SceneManager.GetActiveScene().name);
 
-        minigameIndex = 0;
-        S_curMinigame = "StartScene";
-        SceneManager.LoadScene("StartScene");
+            minigameIndex = 0;
+            S_curMinigame = "StartScene";
+            SceneManager.LoadScene("StartScene");
 
-        if (minigames.Count > 1)
-        {
-            StartCoroutine(Countdown(6));
+            if (L_playedMinigames.Count < minigames.Count - 1)
+            {
+                StartCoroutine(Countdown(6));
+            }
+            else
+            {
+                CheckWinner();
+            }
         }
         else
         {
-            Application.Quit();
+            EndGame(players[winner]);
+        } 
+    }
+    private void EndGame(GameObject G_winner)
+    {
+        players.Clear();
+        players.Add(G_winner);
+
+        for (int i = 0; i < lostPlayers.Count; i++)
+        {
+            players.Add(lostPlayers[i]);
+        }
+        Debug.Log("Winner = " + players[0].transform.tag);
+    }
+    private void CheckWinner()
+    {
+        int I_minWins = 0;
+
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (players[i].GetComponent<PlayerScript>().wins >= I_minWins)
+            {
+                I_minWins = players[i].GetComponent<PlayerScript>().wins;
+            }
+        }
+        for (int i = 0;i < players.Count;i++)
+        {
+            if (players[i].GetComponent<PlayerScript>().wins < I_minWins)
+            {
+                lostPlayers.Add(players[i]);
+                players.RemoveAt(i);            
+            }
+        }
+        if(players.Count == 1)
+        {
+            EndGame(players[0]);
+        }
+        else
+        {
+            L_playedMinigames.RemoveAt(Random.Range(0, L_playedMinigames.Count));
+            B_tieBreaker = true;
+            StartCoroutine(Countdown(6));
         }
     }
 
     public void Ready()
     {
-        Debug.Log(B_countingDown);
-
-        if (!B_countingDown)
+        if (L_playedMinigames.Count < minigames.Count - 1)
         {
-            Txt_timerTxt.gameObject.SetActive(true);
-            StartCoroutine(Countdown(6));
-        }
+            if (!B_countingDown)
+            {
+                Txt_timerTxt.gameObject.SetActive(true);
+                StartCoroutine(Countdown(6));
+            }
 
-        else
-        {
-            Txt_timerTxt.gameObject.SetActive(false);
-            StopAllCoroutines();
-            B_countingDown = false;
-            Txt_timerTxt.text = "0";
+            else
+            {
+                Txt_timerTxt.gameObject.SetActive(false);
+                StopAllCoroutines();
+                B_countingDown = false;
+                Txt_timerTxt.text = "0";
+            }
         }
-
     }
     IEnumerator Countdown(int time)
     {
