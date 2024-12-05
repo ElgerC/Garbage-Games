@@ -46,7 +46,7 @@ public class DoorPlayer : MonoBehaviour
     public IEnumerator NextFloor(GameObject Door)
     {
         Door.GetComponentInParent<Animator>().SetTrigger("Open");
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(2f);
 
 
         if ( Door.GetComponent<DoorMinigameDoors>().CorrectDoor == true)

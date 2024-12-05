@@ -66,10 +66,17 @@ public class PlayerScript : MonoBehaviour
     }
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (context.performed && gamemanager.S_curMinigame == "HotPotato" || context.performed && gamemanager.S_curMinigame == "RandomDoor")
+        if (context.performed)
         {
-            movementInput = context.ReadValue<Vector2>();
-            //Anim_modelAnimator.SetBool("Walking", true);
+            if (gamemanager.S_curMinigame == "HotPotato")
+            {
+                movementInput = context.ReadValue<Vector2>();
+                //Anim_modelAnimator.SetBool("Walking", true);
+            }
+            else if (gamemanager.S_curMinigame == "RandomDoor")
+            {
+                movementInput = context.ReadValue<Vector2>();
+            }
         }
         else if (gamemanager.S_curMinigame == "HotPotato" || gamemanager.S_curMinigame == "ElgerScene")
         {
@@ -93,7 +100,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if(G_golfBall != null && gamemanager.S_curMinigame == "MiniGolf")
+        if (G_golfBall != null && gamemanager.S_curMinigame == "MiniGolf")
         {
             if (context.started)
             {
@@ -105,7 +112,7 @@ public class PlayerScript : MonoBehaviour
                 G_golfBall.GetComponent<BallScript>().Launch();
             }
         }
-        
+
 
         else if (context.performed && canAct)
         {
@@ -145,20 +152,25 @@ public class PlayerScript : MonoBehaviour
     private void Update()
     {
         StepClimb();
+        if (gamemanager.S_curMinigame == "HotPotato" || gamemanager.S_curMinigame == "RandomDoor")
+        {
+            Vector3 move = new Vector3(movementInput.x,0, movementInput.y).normalized * playerSpeed;
+            rb.MovePosition(rb.position + move);
 
-        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized * playerSpeed;
-        rb.MovePosition(rb.position + move);
+            if (move != Vector3.zero)
+            {
+                //rb.velocity = move;
+                transform.forward = move;
+            }
+        }
 
-        if(gamemanager.S_curMinigame == "StartScene")
+
+        if (gamemanager.S_curMinigame == "StartScene")
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        if (move != Vector3.zero)
-        {
-            rb.velocity = move;
-            transform.forward = move;
-        }
+        
         if (gamemanager.S_curMinigame == "HotPotato")
             if (rb.velocity.magnitude < 4f && rb.velocity.magnitude > -1f)
             {
@@ -172,10 +184,10 @@ public class PlayerScript : MonoBehaviour
             }
         else
             barrier.SetActive(false);
-        if(gamemanager.S_curMinigame == "MiniGolf")
+        if (gamemanager.S_curMinigame == "MiniGolf")
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
-        } 
+        }
 
     }
 
@@ -230,12 +242,16 @@ public class PlayerScript : MonoBehaviour
         {
             Destroy(GetComponent<HotPotatoPlayer>());
         }
+        if (GetComponent<DoorPlayer>())
+        {
+            Destroy(GetComponent<DoorPlayer>());
+        }
 
         G_namecard.GetComponent<NameCardScript>().PlaceCrowns(wins);
-        for(int i = 0; i < wins; i++)
+        for (int i = 0; i < wins; i++)
         {
             GameObject G_go = Instantiate(G_crown, transform);
-            G_go.transform.localPosition = new Vector3(0, i+1.5f, 0);
+            G_go.transform.localPosition = new Vector3(0, i + 1.5f, 0);
             L_crownList.Add(G_go);
         }
     }

@@ -5227,7 +5227,6 @@ MonoBehaviour:
   - StartScene
   - ButtonMash
   - HotPotato
-  - MiniGolf
   L_playedMinigames: []
   S_curMinigame: StartScene
   Txt_timerTxt: {fileID: 1875684538}
@@ -5241,7 +5240,7 @@ MonoBehaviour:
   - {x: -782, y: 435, z: 0}
   - {x: -406, y: 435, z: 0}
   - {x: 393, y: 435, z: 0}
-  - {x: 769, y: -105, z: 0}
+  - {x: 769, y: 435, z: 0}
   G_nameCardPrefab: {fileID: 3069752017577008834, guid: f4b7b120fb7d3fd428958c053ff37cc1,
     type: 3}
   G_nameCardCanvas: {fileID: 2098967714}
