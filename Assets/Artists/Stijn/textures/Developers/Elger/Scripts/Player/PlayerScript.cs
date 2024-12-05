@@ -214,7 +214,7 @@ public class PlayerScript : MonoBehaviour
         for(int i = 0; i < wins; i++)
         {
             GameObject G_go = Instantiate(G_crown, transform);
-            G_go.transform.localPosition = new Vector3(0, i+1, 0);
+            G_go.transform.localPosition = new Vector3(0, i+1.5f, 0);
             L_crownList.Add(G_go);
         }
     }

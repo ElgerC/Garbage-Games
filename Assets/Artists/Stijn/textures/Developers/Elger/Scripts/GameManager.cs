@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,8 @@ public class Gamemanager : MonoBehaviour
     public static Gamemanager instance;
 
     public List<GameObject> players = new List<GameObject>();
+    private List<GameObject> lostPlayers = new List<GameObject>();
+
     public List<string> minigames = new List<string>();
     public List<string> L_playedMinigames = new List<string>();
 
@@ -23,9 +26,6 @@ public class Gamemanager : MonoBehaviour
     private int minigameIndex = 0;
 
     [SerializeField] private GamaManagerScrptObj gameManagerData;
-
-    public List<Color> colorList = new List<Color>();
-    public List<GameObject> L_models = new List<GameObject>();
 
     [SerializeField] private List<PlayerApearanceScrptObj> L_apearances = new List<PlayerApearanceScrptObj>();
     [SerializeField] private List<Vector3> V3_nameCardPositions = new List<Vector3>();
@@ -137,32 +137,48 @@ public class Gamemanager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Winner = " + players[winner].transform.tag);
+            EndGame(players[winner]);
+        } 
+    }
+    private void EndGame(GameObject G_winner)
+    {
+        players.Clear();
+        players.Add(G_winner);
+
+        for (int i = 0; i < lostPlayers.Count; i++)
+        {
+            players.Add(lostPlayers[i]);
         }
-        
+        Debug.Log("Winner = " + players[0].transform.tag);
     }
     private void CheckWinner()
     {
         int I_minWins = 0;
-        List<GameObject> L_winningPlayers = new List<GameObject>();
 
         for (int i = 0; i < players.Count; i++)
         {
             if (players[i].GetComponent<PlayerScript>().wins >= I_minWins)
             {
                 I_minWins = players[i].GetComponent<PlayerScript>().wins;
-                L_winningPlayers.Add(players[i]);
             }
         }
-        if(L_winningPlayers.Count == 0)
+        for (int i = 0;i < players.Count;i++)
         {
-            Debug.Log("Winner = " + L_winningPlayers[0].transform.tag);
+            if (players[i].GetComponent<PlayerScript>().wins < I_minWins)
+            {
+                lostPlayers.Add(players[i]);
+                players.RemoveAt(i);            
+            }
+        }
+        if(players.Count == 1)
+        {
+            EndGame(players[0]);
         }
         else
         {
-            players = L_winningPlayers;
-            L_winningPlayers.RemoveAt(Random.Range(0, L_winningPlayers.Count));
+            L_playedMinigames.RemoveAt(Random.Range(0, L_playedMinigames.Count));
             B_tieBreaker = true;
+            StartCoroutine(Countdown(6));
         }
     }
 

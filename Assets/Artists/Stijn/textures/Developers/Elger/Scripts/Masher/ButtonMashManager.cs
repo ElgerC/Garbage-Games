@@ -19,7 +19,9 @@ public class ButtonMashManager : MonoBehaviour
     [SerializeField] private TMP_Text Txt_countDown;
 
     private Animator Anim_cameraAnimator;
+
     [SerializeField] private GameObject G_crown;
+    private bool B_Crowned = false;
     private void Awake()
     {
         gamemanager = Gamemanager.instance;
@@ -52,7 +54,12 @@ public class ButtonMashManager : MonoBehaviour
     }
     private IEnumerator OutroCountdown(int I_winnerIndex)
     {
-        Instantiate(G_crown, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+        if (!B_Crowned)
+        {
+            Instantiate(G_crown, new Vector3(gamemanager.players[I_winnerIndex].transform.position.x, gamemanager.players[I_winnerIndex].transform.position.y + 1.5f, gamemanager.players[I_winnerIndex].transform.position.z), Quaternion.identity);
+            B_Crowned = true;
+        }
+
         yield return new WaitForSeconds(8);
         gamemanager.MinigameFinished(I_winnerIndex);
     }
